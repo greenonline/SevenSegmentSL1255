@@ -7,7 +7,7 @@ Arduino Library for Sanyo SL-1255, SL-1256, SL-2255, SL-2256 Seven Segment LED D
         *** Readme ***
        ================
 
-       Version : 0.5.1
+       Version : 0.5.2
 
 Brief
 =====
@@ -30,48 +30,47 @@ The public methods supplied include (direct) draw, effects, as well as, the usua
 Library Contents
 ================
 
-SevenSeg1255.h
-SevenSeg1255.cpp
-keywords.text
-SevenSegmentMaps.h
-Readme
-QuickStart
-examples/Accessors/Accessors.ino
-examples/AccessorsPlus/AccessorsPlus.ino
-examples/Effects/Effects.ino
-examples/EffectsMulti/EffectsMulti.ino
-examples/EffectsByIndex/EffectsByIndex.ino
-examples/GetSetPinState/GetSetPinState.ino
-examples/GetSetSegmentState/GetSetSegmentState.ino
-examples/GetSetPinState/GetSetPinState.ino
-examples/GetSetStateAll/GetSetStateAll.ino
-examples/HelloWorld/HelloWorld.ino
-examples/SevenSegMaps/SevenSegMaps.ino
-examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
-examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
+    SevenSeg1255.h
+    SevenSeg1255.cpp
+    keywords.text
+    SevenSegmentMaps.h
+    Readme
+    QuickStart
+    examples/Accessors/Accessors.ino
+    examples/AccessorsPlus/AccessorsPlus.ino
+    examples/Effects/Effects.ino
+    examples/EffectsMulti/EffectsMulti.ino
+    examples/EffectsByIndex/EffectsByIndex.ino
+    examples/GetSetPinState/GetSetPinState.ino
+    examples/GetSetSegmentState/GetSetSegmentState.ino
+    examples/GetSetPinState/GetSetPinState.ino
+    examples/GetSetStateAll/GetSetStateAll.ino
+    examples/HelloWorld/HelloWorld.ino
+    examples/SevenSegMaps/SevenSegMaps.ino
+    examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
+    examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
 
 Default Pinout
 ==============
 
-Refer to SANYO SL-1255-30 datasheet 
-(http://www.datasheetarchive.com/dlmain/Datasheets-16/DSA-305501.pdf)
+Refer to SANYO SL-1255-30 datasheet, located at http://www.datasheetarchive.com/dlmain/Datasheets-16/DSA-305501.pdf
 
-pin 2 -> segment a1 (15)
-pin 3 -> segment b1 (13)
-pin 4 -> segment c1 (1)
-pin 5 -> segment d1 (3)
-pin 6 -> segment e1 (2)
-pin 7 -> segment f1 (14)
-pin 8 -> segment g1 (16)
-pin 9 -> segment a2 (10)
-pin 10 -> segment b2 (12)
-pin 11 -> segment c2 (8)
-pin 12 -> segment d2 (6)
-pin 13 -> segment e2 (7)
-pin 14 -> segment f2 (11)
-pin 15 -> segment g2 (9)
-Vcc    -> ANODE 1 (4)
-Vcc    -> ANODE 2 (5)
+    pin 2 -> segment a1 (15)
+    pin 3 -> segment b1 (13)
+    pin 4 -> segment c1 (1)
+    pin 5 -> segment d1 (3)
+    pin 6 -> segment e1 (2)
+    pin 7 -> segment f1 (14)
+    pin 8 -> segment g1 (16)
+    pin 9 -> segment a2 (10)
+    pin 10 -> segment b2 (12)
+    pin 11 -> segment c2 (8)
+    pin 12 -> segment d2 (6)
+    pin 13 -> segment e2 (7)
+    pin 14 -> segment f2 (11)
+    pin 15 -> segment g2 (9)
+    Vcc    -> ANODE 1 (4)
+    Vcc    -> ANODE 2 (5)
 
 Constructor Methods
 ===================
@@ -220,7 +219,6 @@ Add shift (left and right) method
   - scroll by one character
 
 
-
 Done
 ====
 
@@ -284,7 +282,7 @@ Added getPinState() methods - use Arduino Port States?
 
 Added example for getState() and setState(), GetSetState.ino
 
-Added use of D0, D1, A0 and A1 pins on Nano to the readme
+Added use of D0, D1, A0 and A1 pins on Nano to the Readme
 
 Changed digit0 refs (a0-g0) to digit2 (a2-g2), as per data sheet.
 
@@ -296,8 +294,8 @@ Added the method effect3(), for both digits simultaneously, as opposed to sequen
 
 Provided a scroll function (left and right)
 
-Fixed discrepancy between drawBitmapX(int character) and writeX(char character) methods
-  - int character became int sevensegmentCode
+Fixed parameter discrepancy between drawBitmapX(int character) and writeX(char character) methods
+  - (int character) became (int sevensegmentCode)
 
 
 
