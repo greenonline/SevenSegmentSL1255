@@ -1,0 +1,34 @@
+        *** SevenSegment SL-1255-30 Library ***
+       =========================================
+
+        *** Readme ***
+       ================
+
+       Version : 0.6
+
+In order to get you started, wire up your SL-1255 two digit seven segment display to your Nano, UNO, Mega board using the pin out described below (don't forget the 470 Ohm series resistors between each pin and segment (don't use just one common resistor on the common anode)), and then run the HelloWorld and SevenSegMaps99Loop example sketches, which are found in the examples directory (examples/HelloWorld/HelloWorld.ino and examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino respectively).
+
+
+Default Pinout
+==============
+
+Refer to SANYO SL-1255-30 datasheet 
+(http://www.datasheetarchive.com/dlmain/Datasheets-16/DSA-305501.pdf)
+
+pin 2 -> segment a1 (15)
+pin 3 -> segment b1 (13)
+pin 4 -> segment c1 (1)
+pin 5 -> segment d1 (3)
+pin 6 -> segment e1 (2)
+pin 7 -> segment f1 (14)
+pin 8 -> segment g1 (16)
+pin 9 -> segment a2 (10)
+pin 10 -> segment b2 (12)
+pin 11 -> segment c2 (8)
+pin 12 -> segment d2 (6)
+pin 13 -> segment e2 (7)
+pin 14 -> segment f2 (11)
+pin 15 -> segment g2 (9)
+Vcc    -> ANODE 1 (4)
+Vcc    -> ANODE 2 (5)
+
