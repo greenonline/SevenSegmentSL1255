@@ -4,7 +4,7 @@
         *** Readme ***
        ================
 
-       Version : 0.6
+       Version : 0.5.3
 
 Brief
 =====
@@ -27,48 +27,53 @@ The public methods supplied include (direct) draw, effects, as well as, the usua
 Library Contents
 ================
 
-SevenSeg1255.h
-SevenSeg1255.cpp
-keywords.text
-SevenSegmentMaps.h
-Readme
-QuickStart
-examples/Accessors/Accessors.ino
-examples/AccessorsPlus/AccessorsPlus.ino
-examples/Effects/Effects.ino
-examples/EffectsMulti/EffectsMulti.ino
-examples/EffectsByIndex/EffectsByIndex.ino
-examples/GetSetPinState/GetSetPinState.ino
-examples/GetSetSegmentState/GetSetSegmentState.ino
-examples/GetSetPinState/GetSetPinState.ino
-examples/GetSetStateAll/GetSetStateAll.ino
-examples/HelloWorld/HelloWorld.ino
-examples/SevenSegMaps/SevenSegMaps.ino
-examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
-examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
+    SevenSeg1255.h
+    SevenSeg1255.cpp
+    keywords.txt
+    SevenSegmentMaps.h
+    Readme.txt
+    QuickStart.txt
+    examples/Accessors/Accessors.ino
+    examples/AccessorsPlus/AccessorsPlus.ino
+    examples/Effects/Effects.ino
+    examples/EffectsMulti/EffectsMulti.ino
+    examples/EffectsByIndex/EffectsByIndex.ino
+    examples/GetSetPinState/GetSetPinState.ino
+    examples/GetSetSegmentState/GetSetSegmentState.ino
+    examples/GetSetPinState/GetSetPinState.ino
+    examples/GetSetStateAll/GetSetStateAll.ino
+    examples/HelloWorld/HelloWorld.ino
+    examples/SevenSegMaps/SevenSegMaps.ino
+    examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
+    examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
+    photos/breadboard01.jpg
+    photos/breadboard02.jpg
+    photos/breadboard03.jpg
+    schematics/SL-1255_Nano_bb_fritzing-01.jpg
+    schematics/SL-1255_Nano.fzz
+    schematics/sevenSegmentASCIIMaps.jpg
 
 Default Pinout
 ==============
 
-Refer to SANYO SL-1255-30 datasheet 
-(http://www.datasheetarchive.com/dlmain/Datasheets-16/DSA-305501.pdf)
+Refer to SANYO SL-1255-30 datasheet, located at http://www.datasheetarchive.com/dlmain/Datasheets-16/DSA-305501.pdf
 
-pin 2 -> segment a1 (15)
-pin 3 -> segment b1 (13)
-pin 4 -> segment c1 (1)
-pin 5 -> segment d1 (3)
-pin 6 -> segment e1 (2)
-pin 7 -> segment f1 (14)
-pin 8 -> segment g1 (16)
-pin 9 -> segment a2 (10)
-pin 10 -> segment b2 (12)
-pin 11 -> segment c2 (8)
-pin 12 -> segment d2 (6)
-pin 13 -> segment e2 (7)
-pin 14 -> segment f2 (11)
-pin 15 -> segment g2 (9)
-Vcc    -> ANODE 1 (4)
-Vcc    -> ANODE 2 (5)
+    pin 2 -> segment a1 (15)
+    pin 3 -> segment b1 (13)
+    pin 4 -> segment c1 (1)
+    pin 5 -> segment d1 (3)
+    pin 6 -> segment e1 (2)
+    pin 7 -> segment f1 (14)
+    pin 8 -> segment g1 (16)
+    pin 9 -> segment a2 (10)
+    pin 10 -> segment b2 (12)
+    pin 11 -> segment c2 (8)
+    pin 12 -> segment d2 (6)
+    pin 13 -> segment e2 (7)
+    pin 14 -> segment f2 (11)
+    pin 15 -> segment g2 (9)
+    Vcc    -> ANODE 1 (4)
+    Vcc    -> ANODE 2 (5)
 
 Constructor Methods
 ===================
@@ -117,7 +122,15 @@ These methods enable the user to pass a numeric (octal, decimal or hexadecimal) 
 Effects Methods
 ===============
 
-These methods provide various effects, to rotate or flash the lit segments, or clear functions. Experiment with them to see what they do. A 'catalogue' method, effect(), exists that is called with an index to call the various functions. You can cycle throughout the effects by putting this method in a for loop and calling it repeatedly, increasing the value of the passed index. This forms part of the example sketch. The value of the index parameter is between 0 and 25. 
+These methods provide various visual effects that may be employed on the seven segment display. For example, various methods exist which:
+  - rotate the segment that is illuminated in a number of different ways, or;
+  - blank() the display (all segments are switched off), or;
+  - fill() the display (all segments are switched on), or;
+  - flash() the lit segments (all segments are alternately switched on and then after a specified delay switched off).
+
+The best way to understand them is to experiment with each of them to see what they do. The blank(), fill() and flash() methods are the simplest to understand, and are probably the most useful. 
+
+These effect methods can be called directly or via an index parameter. A 'catalogue' method, effect(), is also provided that can be called using the index parameter to call the various functions. You can cycle throughout the effects by putting this method in a for loop and calling it repeatedly, increasing the value of the passed index. This forms part of the example sketch, EffectsByIndex. The value of the index parameter is between 0 and 25, as there are 26 different effects. 
 
 A delay parameter can also be used, which effectively specifies the speed of the effect, i.e. the delay between successive segments being illuminated.
 
@@ -186,18 +199,6 @@ Constructor for only one or other display digit
   - Maybe pins are used by something else, inputs for example.
   - Need constructor to set the LSD pins and default the MSD pins.
 
-Explain fill, blank and flash in readme
-
-Include ASCII bitmap picture:
-  - Draw in GIMP
-  - Use grid for alignment
-  - Have empty seven segment template
-
-Have quickstart doc:
-  - pinout
-  - routines (begin, etc)
-  - basic example
-
 Better name for lite class:
 Seg71255
 Seg7x25x
@@ -213,6 +214,12 @@ Define memory for large amounts of strings too;
 
 Check octal write example
 
+Add shift (left and right) method
+  - scroll by one character
+
+Add invertDisplay() effect
+
+Add graphic equaliser effect.
 
 
 Done
@@ -278,7 +285,7 @@ Added getPinState() methods - use Arduino Port States?
 
 Added example for getState() and setState(), GetSetState.ino
 
-Added use of D0, D1, A0 and A1 pins on Nano to the readme
+Added use of D0, D1, A0 and A1 pins on Nano to the Readme
 
 Changed digit0 refs (a0-g0) to digit2 (a2-g2), as per data sheet.
 
@@ -290,8 +297,22 @@ Added the method effect3(), for both digits simultaneously, as opposed to sequen
 
 Provided a scroll function (left and right)
 
-Fixed discrepancy between drawBitmapX(int character) and writeX(char character) methods
-  - int character became int sevensegmentCode
+Fixed parameter discrepancy between drawBitmapX(int character) and writeX(char character) methods
+  - (int character) became (int sevensegmentCode)
+
+Explained fill(), blank() and flash() in Readme.txt and QuickStart.txt
+
+Added QuickStart.txt doc:
+  - pinout
+  - routines (begin, etc)
+  - basic example
+
+Included ASCII bitmap picture:
+  - Draw in GIMP
+  - Use grid for alignment
+  - Have empty seven segment template
+
+Added Fritzing diagram
 
 
 
