@@ -7,7 +7,7 @@ Arduino Library for Sanyo SL-1255, SL-1256, SL-2255, SL-2256 Seven Segment LED D
         *** Readme ***
        ================
 
-       Version : 0.5.2
+       Version : 0.5.3
 
 Brief
 =====
