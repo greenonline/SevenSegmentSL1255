@@ -1,10 +1,10 @@
         *** SevenSegment SL-1255-30 Library ***
        =========================================
 
-        *** Readme ***
-       ================
+        *** QuickStart ***
+       ====================
 
-       Version : 0.6
+       Version : 0.6.1
 
 In order to get you started, wire up your SL-1255 two digit seven segment display to your Nano, UNO, Mega board using the pin out described below (don't forget the 470 Ohm series resistors between each pin and segment (don't use just one common resistor on the common anode)), and then run the HelloWorld and SevenSegMaps99Loop example sketches, which are found in the examples directory (examples/HelloWorld/HelloWorld.ino and examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino respectively).
 
@@ -32,3 +32,20 @@ pin 15 -> segment g2 (9)
 Vcc    -> ANODE 1 (4)
 Vcc    -> ANODE 2 (5)
 
+The necessary methods
+=====================
+
+In order to crete a basic sketch, you will require calling two methods:
+  - begin() - in setup() - to initialise the pin outputs of the Arduino
+  - write(char[]) - in loop() - pass a '\0' terminated two character string, containing the ASCII characters that you wish to write
+
+Additional useful methods, that may be called in the loop() function include:
+  - blank_1() and blank_2() - to turn off the segments in the digits 1 and 2 respectively
+  - fill_1() and fill_2() - to turn on the segments in the digits 1 and 2 respectively
+  - flash_1(int) and flash_2(int) - to turn on and off the segments in the digits 1 and 2 respectively, using a delay
+  - write1(int) and write2(int) - to write the character with an ASCII code to the digits 1 and 2 respectively
+
+Many other, more advanced, methods are also provided. Please refer to the Readme and the header file, SevenSeg1255.h, for more information.
+
+Enjoy.
+ 

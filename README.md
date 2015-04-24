@@ -7,7 +7,7 @@ Arduino Library for Sanyo SL-1255, SL-1256, SL-2255, SL-2256 Seven Segment LED D
         *** Readme ***
        ================
 
-       Version : 0.5.2
+       Version : 0.5.3
 
 Brief
 =====
@@ -32,10 +32,10 @@ Library Contents
 
     SevenSeg1255.h
     SevenSeg1255.cpp
-    keywords.text
+    keywords.txt
     SevenSegmentMaps.h
-    Readme
-    QuickStart
+    Readme.txt
+    QuickStart.txt
     examples/Accessors/Accessors.ino
     examples/AccessorsPlus/AccessorsPlus.ino
     examples/Effects/Effects.ino
@@ -49,6 +49,12 @@ Library Contents
     examples/SevenSegMaps/SevenSegMaps.ino
     examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
     examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
+    photos/breadboard01.jpg
+    photos/breadboard02.jpg
+    photos/breadboard03.jpg
+    schematics/SL-1255_Nano_bb_fritzing-01.jpg
+    schematics/SL-1255_Nano.fzz
+    schematics/sevenSegmentASCIIMaps.jpg
 
 Default Pinout
 ==============
@@ -119,7 +125,15 @@ These methods enable the user to pass a numeric (octal, decimal or hexadecimal) 
 Effects Methods
 ===============
 
-These methods provide various effects, to rotate or flash the lit segments, or clear functions. Experiment with them to see what they do. A 'catalogue' method, effect(), exists that is called with an index to call the various functions. You can cycle throughout the effects by putting this method in a for loop and calling it repeatedly, increasing the value of the passed index. This forms part of the example sketch. The value of the index parameter is between 0 and 25. 
+These methods provide various visual effects that may be employed on the seven segment display. For example, various methods exist which:
+  - rotate the segment that is illuminated in a number of different ways, or;
+  - blank() the display (all segments are switched off), or;
+  - fill() the display (all segments are switched on), or;
+  - flash() the lit segments (all segments are alternately switched on and then after a specified delay switched off).
+
+The best way to understand them is to experiment with each of them to see what they do. The blank(), fill() and flash() methods are the simplest to understand, and are probably the most useful. 
+
+These effect methods can be called directly or via an index parameter. A 'catalogue' method, effect(), is also provided that can be called using the index parameter to call the various functions. You can cycle throughout the effects by putting this method in a for loop and calling it repeatedly, increasing the value of the passed index. This forms part of the example sketch, EffectsByIndex. The value of the index parameter is between 0 and 25, as there are 26 different effects. 
 
 A delay parameter can also be used, which effectively specifies the speed of the effect, i.e. the delay between successive segments being illuminated.
 
@@ -188,18 +202,6 @@ Constructor for only one or other display digit
   - Maybe pins are used by something else, inputs for example.
   - Need constructor to set the LSD pins and default the MSD pins.
 
-Explain fill, blank and flash in readme
-
-Include ASCII bitmap picture:
-  - Draw in GIMP
-  - Use grid for alignment
-  - Have empty seven segment template
-
-Have quickstart doc:
-  - pinout
-  - routines (begin, etc)
-  - basic example
-
 Better name for lite class:
 Seg71255
 Seg7x25x
@@ -217,6 +219,10 @@ Check octal write example
 
 Add shift (left and right) method
   - scroll by one character
+
+Add invertDisplay() effect
+
+Add graphic equaliser effect.
 
 
 Done
@@ -296,6 +302,20 @@ Provided a scroll function (left and right)
 
 Fixed parameter discrepancy between drawBitmapX(int character) and writeX(char character) methods
   - (int character) became (int sevensegmentCode)
+
+Explained fill(), blank() and flash() in Readme.txt and QuickStart.txt
+
+Added QuickStart.txt doc:
+  - pinout
+  - routines (begin, etc)
+  - basic example
+
+Included ASCII bitmap picture:
+  - Draw in GIMP
+  - Use grid for alignment
+  - Have empty seven segment template
+
+Added Fritzing diagram
 
 
 
