@@ -4,7 +4,7 @@
         *** Readme ***
        ================
 
-       Version : 0.5.3
+       Version : 0.5.4
 
 Brief
 =====
@@ -85,23 +85,23 @@ Default
 
 Sets up the two digits using the default pins Pin2 through to Pin16.
 
-One Segment
------------
+One Digit
+---------
 
 Sets up the most significant digit (MSD) with user defined pins and the least significant digit (LSD) with Pin10 though to Pin 16.
 
-Two segments
-------------
+Two Digits
+----------
 
 Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins.
 
-Segments with ssType
---------------------
+Two Digits with ssType
+----------------------
 
 Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the Seven Segment type (by the parameter ssType) using a pre-defined model {SL1255, SL1256, SL2255, SL2256} which are set to either 0 or 1 (equivalent to the OnValue being HIGH or LOW respectively).
 
-Segments with onValue and offValue
------------------------------------
+Two Digits with onValue and offValue
+------------------------------------
 
 Sets up the most significant digit (MSD) and the least significant digit (LSD) with user defined pins and allows the user to specify the LED on state (using the parameter OnValue) to LOW or HIGH, and the LED off state (using the parameter OffValue) should be set to the complement of the OnValue, i.e. if OnValue is LOW, the OffValue should be HIGH.
 
@@ -155,7 +155,7 @@ Known Issues
 
 1. The method draw_xx() is ambiguous by nature, due to the naming convention. Does it draw on the first or segment digit? Hence, use draw_Hx() ad draw_xH() as they produce the same character as draw_xx(), "X"
 
-2. Digit 2 (the right hand digit), in the library, is referred to as digit 0, in the interest of least significant and most significant digits. This may cause confusion, as it conflicts with the data sheet for the SL-1255-30. It is possible to replicate the draw0() methods with draw2() methods for completeness, but then that would conflict with the binary notion of draw2() for writing to both digits simultaneously.
+2. Digit 2 (the right hand digit), in the library, is referred to as digit 0, in the interest of least significant and most significant digits. This may cause confusion, as it conflicts with the data sheet for the SL-1255-30. Hence the draw0() methods have been replicated with draw2() methods for completeness. However as that conflicts with the binary notion of draw2() for writing to both digits (0 and 1) simultaneously, "3" has been used to signify both digits (or the effects methods only). If you want to display a two character string then just use the write() or scroll() methods, as a draw3() method has not be provided for, see example sketch HelloWorld.ino.
 
 3. Arduino Nano does not enough enough digital pins (two pins short), and so A0 and A1 are used as D15 and D16. D0 and D1 should not be used, as they are used for Rx and Tx respectively.
 
@@ -219,7 +219,9 @@ Add shift (left and right) method
 
 Add invertDisplay() effect
 
-Add graphic equaliser effect.
+Add graphicEqualiser() effect.
+
+Add sequentialBorizontalBars() effect
 
 
 Done
