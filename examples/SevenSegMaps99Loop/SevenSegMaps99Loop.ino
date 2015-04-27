@@ -2,7 +2,7 @@
 SevenSeg99Loop.ino
 
 Cycles 00 through 99, using the seven segment maps character write() method 
-supplied in the SevenSeg1255 class, repeatedly.
+supplied in the SevenSegmentSL1255 class, repeatedly.
 
 Demonstrates the methods:
   begin();
@@ -21,12 +21,12 @@ Released into the public domain.
 Copyright (c) 2015, Greenonline, coded by Mark Graham Jenkins.
 http://greenonline.co.uk
 
-SevenSeg1255 Library is free software: you can redistribute it and/or modify
+SevenSegmentSL1255 Library is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-SevenSeg1255 Library is distributed in the hope that it will be useful,
+SevenSegmentSL1255 Library is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -36,7 +36,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 This file needs the following Libraries:
 
-    SevenSeg1255
+    SevenSegmentSL1255
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Special Thanks:
 Bangkok Food stalls and Thai Beer
@@ -55,11 +55,11 @@ BugList of the current version:
 Please report any!
  */
  
-#include "SevenSeg1255.h"
+#include "SevenSegmentSL1255.h"
 
 #define defaultDelay 500
 
-SevenSeg1255 sevenSeg1255;
+SevenSegmentSL1255 sevenSeg1255;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
