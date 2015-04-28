@@ -4,7 +4,7 @@
         *** Readme ***
        ================
 
-       Version : 0.5.4
+       Version : 0.5.5
 
 Brief
 =====
@@ -31,8 +31,6 @@ Library Contents
     SevenSeg1255.cpp
     keywords.txt
     SevenSegmentMaps.h
-    Readme.txt
-    QuickStart.txt
     examples/Accessors/Accessors.ino
     examples/AccessorsPlus/AccessorsPlus.ino
     examples/Effects/Effects.ino
@@ -46,12 +44,16 @@ Library Contents
     examples/SevenSegMaps/SevenSegMaps.ino
     examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
     examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
-    photos/breadboard01.jpg
-    photos/breadboard02.jpg
-    photos/breadboard03.jpg
-    schematics/SL-1255_Nano_bb_fritzing-01.jpg
-    schematics/SL-1255_Nano.fzz
-    schematics/sevenSegmentASCIIMaps.jpg
+    documentation/Readme.txt
+    documentation/QuickStart.txt
+    documentation/7-seg display sl-1255-30 DSA-305501.pdf
+    documentation/photos/breadboard01.jpg
+    documentation/photos/breadboard02.jpg
+    documentation/photos/breadboard03.jpg
+    documentation/photos/SL-1255-30.jpg
+    documentation/schematics/SL-1255_Nano_bb_fritzing-01.jpg
+    documentation/schematics/SL-1255_Nano.fzz
+    documentation/schematics/sevenSegmentASCIIMaps.jpg
 
 Default Pinout
 ==============
@@ -78,7 +80,7 @@ Refer to SANYO SL-1255-30 datasheet, located at http://www.datasheetarchive.com/
 Constructor Methods
 ===================
 
-There are five various overridden constructors:
+There are five various overridden constructors. Please note that all constructors configure the pins for both digits. The reason is that this library is designed for the two digital SL-1255 display. If you only want to configure the pins for just one digit, then use a sign digit version of this library. Here is a list of the constructor types:
 
 Default
 -------
@@ -221,7 +223,9 @@ Add invertDisplay() effect
 
 Add graphicEqualiser() effect.
 
-Add sequentialBorizontalBars() effect
+Add sequentialHorizontalBars() effect
+
+Add hyphen to class name, SL-1255?
 
 
 Done
@@ -316,6 +320,15 @@ Included ASCII bitmap picture:
 
 Added Fritzing diagram
 
+Added photo of SL-1255 display
+
+Added SL-1255 data sheet
+
+Changed class and file names from SevenSeg1255 to SevenSegSL1255
+
+Changed low fat repository name from SevenSegLite1255 to SevenSegmentSL1255Lite
+
+Put all docs, photos and schematics in documentation/ directory
 
 
 
