@@ -4377,6 +4377,7 @@ void SevenSegmentSL1255::rotateCircleAnticlockInvert_2(int totaldelay){
 
 
 // Number placement
+// Direct Draw methods using digit number in method name
 // *** Most Significant Digit ***
 // Hex chars (2nd digit)
 
@@ -5014,6 +5015,8 @@ void SevenSegmentSL1255::draw_degree_1(void) {
   digitalWrite(_g1,_onValue);
 }
 
+// Number placement
+// Direct Draw methods using digit number in method name
 // *** Least Significant Digit ***
 // Hex chars (1st digit)
 
@@ -5652,6 +5655,8 @@ void SevenSegmentSL1255::draw_degree_0(void) {
 }
 
 
+// Number placement
+// Direct Draw methods using digit number in method name
 // *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
 // Hex chars (1st digit)
 

@@ -301,8 +301,8 @@ class SevenSegmentSL1255
       // *** Least Significant Digit ***
       // Direct Draw methods
       // Hex chars (1st digit)
-      void draw_x0(void); // conflict with number placement
-      void draw_x1(void); // conflict with number placement
+      void draw_x0(void);
+      void draw_x1(void);
       void draw_x2(void);
       void draw_x3(void);
       void draw_x4(void);
@@ -442,6 +442,8 @@ class SevenSegmentSL1255
 
 
       // *** Most Significant Digit ***
+	  // Number placement
+      // Direct Draw methods using digit number in method name
       // Hex chars (2nd digit)
       void draw_0_1(void);
       void draw_1_1(void);
@@ -512,6 +514,8 @@ class SevenSegmentSL1255
       void draw_degree_1(void);
 
       // *** Least Significant Digit ***
+	  // Number placement
+      // Direct Draw methods using digit number in method name
       // Hex chars (1st digit)
       void draw_0_0(void);
       void draw_1_0(void);
@@ -582,6 +586,8 @@ class SevenSegmentSL1255
       void draw_degree_0(void);
 
       // *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
+	  // Number placement
+      // Direct Draw methods using digit number in method name
       // Hex chars (1st digit)
       void draw_0_2(void);
       void draw_1_2(void);
