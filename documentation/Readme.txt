@@ -18,11 +18,12 @@ One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, a
 
 Synopsis
 ========
+
 When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays.
 
 This library will also work with SL-1256 and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
 
-The public methods supplied include (direct) draw, effects, as well as, the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). The standard C++ getters and setters for accessing class members are also provided.  The various method types are briefly discussed below. The methods are often overridden to provide versatility and to suit various writing styles. This may appear confusing initially, although a simple subset of the methods is all that is required in order to get the library up and running with your display (constructor, begin, write).
+The public methods supplied include (direct) draw, effects, as well as, the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). The standard C++ getters and setters for accessing class members are also provided.  The various method types are briefly discussed below. The methods are often overridden to provide versatility and to suit various writing styles. This may appear confusing initially, although a simple subset of the methods is all that is required in order to get the library up and running with your display (constructor, begin and write).
 
 Library Contents
 ================
@@ -119,6 +120,7 @@ These methods assign the pins of the Arduino, and should be called from the setu
 
 Write Methods
 =============
+
 These methods enable the user to pass a numeric (octal, decimal or hexadecimal) value or alphanumeric (or ASCII) character to the method to display on either or both of the display's digits.
 
 Effects Methods
@@ -140,14 +142,17 @@ Note: This delay is not the total delay, i.e. the total duration of the effect, 
 
 Getters and Setters
 ===================
+
 These methods provide access to the private members of the class - the individual segments (_a0, _b0, _c0, … _g0, _a1, _b1, … _g1), the on and off values (_onValue and _offValue) and the seven segment type (_ssType)
 
 Example Sketches
 ================
+
 Some examples have been include to familiarise the user with the various methods available. These focus on the areas outlined in the Methods sections, so there is an example demonstrating the direct draw functions, another for the effects, one illustrating the accessor methods, the getters and setters (making use of the serial port to write and display values of the private members), and finally a couple of simple Arduino write examples. It is this write example that ail probably be the most pertinent to everyday display projects.
 
 Conclusion
 ==========
+
 Please enjoy using this library. It may be a little heavyweight, as it is an "everything-but-the-kitchen-sink" type library, with many member methods overridden and duplicated with different function names, in order to accommodate new Arduino users, by adhering to Arduino naming standards and conventions, as well as some non standard functions, included for the convenience, and amusement, of advanced users.
 
 If you would prefer to employ a light weight version of this library that has been cut down, for memory economics, please consider using SevenSegSL1255Lite.
@@ -163,6 +168,7 @@ Known Issues
 
 Developer Notes:
 ================
+
 Below is a scratch pad for ideas which are completed, in progress and/or pipe dreams.
 
 To Do
