@@ -1,5 +1,5 @@
 /*
-SevenSeg1255.h - Library for the:
+SevenSegmentSL1255.h - Library for the:
 						SL-1255-30 Red Seven Segment display (Common Anode)
 						SL-1256-30 Red Seven Segment display (Common Cathode)
 						SL-2255-30 Green Seven Segment display (Common Anode)
@@ -9,12 +9,12 @@ Released into the public domain.
 -------------------------------------------------------------------------------
 Copyright (c) 2015, Greenonline, coded by Mark Graham Jenkins.
 
-SevenSeg1255 Library is free software: you can redistribute it and/or modify
+SevenSegmentSL1255 Library is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-SevenSeg1255 Library is distributed in the hope that it will be useful,
+SevenSegmentSL1255 Library is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -49,8 +49,8 @@ Please report any!
    alt - alternate segments
 */
 
-#ifndef SevenSeg1255_h
-#define SevenSeg1255_h
+#ifndef SevenSegmentSL1255_h
+#define SevenSegmentSL1255_h
 
 #include "Arduino.h"
 #include "SevenSegmentMaps.h"
@@ -74,13 +74,13 @@ Please report any!
 #define default_g2 15
 
 // Pin out: Display2 Segment Pin#
-#define default_a0 default_a0
-#define default_b0 default_b0
-#define default_c0 default_c0
-#define default_d0 default_d0
-#define default_e0 default_e0
-#define default_f0 default_f0
-#define default_g0 default_g0
+#define default_a0 default_a2
+#define default_b0 default_b2
+#define default_c0 default_c2
+#define default_d0 default_d2
+#define default_e0 default_e2
+#define default_f0 default_f2
+#define default_g0 default_g2
 
 // 7 segment type, common anode, or cathode
 // The value of the model basically denotes the ON value for an LED,
@@ -98,14 +98,14 @@ Please report any!
 
 #define default_delay 500
 
-class SevenSeg1255
+class SevenSegmentSL1255
 {
     public:
-      SevenSeg1255();
-      SevenSeg1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
-      SevenSeg1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);
-      SevenSeg1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType);
-      SevenSeg1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue);
+      SevenSegmentSL1255();
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType);
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue);
 
       void begin(void);
 
