@@ -27,8 +27,8 @@ The public methods supplied include (direct) draw, effects, as well as, the usua
 Library Contents
 ================
 
-    SevenSeg1255.h
-    SevenSeg1255.cpp
+    SevenSegmentSL1255.h
+    SevenSegmentSL1255.cpp
     keywords.txt
     SevenSegmentMaps.h
     examples/Accessors/Accessors.ino
@@ -150,7 +150,7 @@ Conclusion
 ==========
 Please enjoy using this library. It may be a little heavyweight, as it is an "everything-but-the-kitchen-sink" type library, with many member methods overridden and duplicated with different function names, in order to accommodate new Arduino users, by adhering to Arduino naming standards and conventions, as well as some non standard functions, included for the convenience, and amusement, of advanced users.
 
-If you would prefer to employ a light weight version of this library that has been cut down, for memory economics, please consider using SevenSegLiteSL1255
+If you would prefer to employ a light weight version of this library that has been cut down, for memory economics, please consider using SevenSegSL1255Lite.
 
 Known Issues
 ============
@@ -201,7 +201,7 @@ Constructor for only one or other display digit
   - Maybe pins are used by something else, inputs for example.
   - Need constructor to set the LSD pins and default the MSD pins.
 
-Better name for lite class:
+Better name for lite class? For example:
 Seg71255
 Seg7x25x
 ss1255
