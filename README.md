@@ -7,7 +7,7 @@ Arduino Library for Sanyo SL-1255, SL-1256, SL-2255, SL-2256 Seven Segment LED D
         *** Readme ***
        ================
 
-       Version : 0.5.4
+       Version : 0.5.6
 
 Brief
 =====
@@ -17,13 +17,13 @@ This is an Arduino Library for the Sanyo SL-1255-30 two digit seven segment disp
 Introduction
 ============
 
-One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common cathode (?) device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. This is that library.
+One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common anode device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. This is that library.
 
 Synopsis
 ========
-When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common cathode devices. The private member, _onValue, is LOW for the segments of these displays.
+When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays.
 
-This library will also work with SL-1256 and SL-2256 (green) common anode(?) devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
+This library will also work with SL-1256 and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
 
 The public methods supplied include (direct) draw, effects, as well as, the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). The standard C++ getters and setters for accessing class members are also provided.  The various method types are briefly discussed below. The methods are often overridden to provide versatility and to suit various writing styles. This may appear confusing initially, although a simple subset of the methods is all that is required in order to get the library up and running with your display (constructor, begin, write).
 
@@ -34,8 +34,6 @@ Library Contents
     SevenSeg1255.cpp
     keywords.txt
     SevenSegmentMaps.h
-    Readme.txt
-    QuickStart.txt
     examples/Accessors/Accessors.ino
     examples/AccessorsPlus/AccessorsPlus.ino
     examples/Effects/Effects.ino
@@ -49,12 +47,16 @@ Library Contents
     examples/SevenSegMaps/SevenSegMaps.ino
     examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino
     examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
-    photos/breadboard01.jpg
-    photos/breadboard02.jpg
-    photos/breadboard03.jpg
-    schematics/SL-1255_Nano_bb_fritzing-01.jpg
-    schematics/SL-1255_Nano.fzz
-    schematics/sevenSegmentASCIIMaps.jpg
+    documentation/Readme.txt
+    documentation/QuickStart.txt
+    documentation/7-seg display sl-1255-30 DSA-305501.pdf
+    documentation/photos/breadboard01.jpg
+    documentation/photos/breadboard02.jpg
+    documentation/photos/breadboard03.jpg
+    documentation/photos/SL-1255-30.jpg
+    documentation/schematics/SL-1255_Nano_bb_fritzing-01.jpg
+    documentation/schematics/SL-1255_Nano.fzz
+    documentation/schematics/sevenSegmentASCIIMaps.jpg
 
 Default Pinout
 ==============
@@ -81,7 +83,7 @@ Refer to SANYO SL-1255-30 datasheet, located at http://www.datasheetarchive.com/
 Constructor Methods
 ===================
 
-There are five various overridden constructors:
+There are five various overridden constructors. Please note that all constructors configure the pins for both digits. The reason is that this library is designed for the two digital SL-1255 display. If you only want to configure the pins for just one digit, then use a sign digit version of this library. Here is a list of the constructor types:
 
 Default
 -------
@@ -173,7 +175,7 @@ Provide printf() and putchar() functions
 
 Add 7 segment display chip (7447/5447) routines
 
-Test common anode (buy SL-1256 display)
+Test common cathode (buy SL-1256 display)
 
 Add functionality for extra mega pins
 
@@ -224,7 +226,9 @@ Add invertDisplay() effect
 
 Add graphicEqualiser() effect.
 
-Add sequentialBorizontalBars() effect
+Add sequentialHorizontalBars() effect
+
+Add hyphen to class name, SL-1255?
 
 
 Done
@@ -319,6 +323,15 @@ Included ASCII bitmap picture:
 
 Added Fritzing diagram
 
+Added photo of SL-1255 display
+
+Added SL-1255 data sheet
+
+Changed class and file names from SevenSeg1255 to SevenSegSL1255
+
+Changed low fat repository name from SevenSegLite1255 to SevenSegmentSL1255Lite
+
+Put all docs, photos and schematics in documentation/ directory
 
 
 
