@@ -4,7 +4,7 @@
         *** Readme ***
        ================
 
-       Version : 0.5.5
+       Version : 0.5.6
 
 Brief
 =====
@@ -14,13 +14,13 @@ This is an Arduino Library for the Sanyo SL-1255-30 two digit seven segment disp
 Introduction
 ============
 
-One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common cathode (?) device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. This is that library.
+One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common anode device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. This is that library.
 
 Synopsis
 ========
-When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common cathode devices. The private member, _onValue, is LOW for the segments of these displays.
+When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays.
 
-This library will also work with SL-1256 and SL-2256 (green) common anode(?) devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
+This library will also work with SL-1256 and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
 
 The public methods supplied include (direct) draw, effects, as well as, the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). The standard C++ getters and setters for accessing class members are also provided.  The various method types are briefly discussed below. The methods are often overridden to provide versatility and to suit various writing styles. This may appear confusing initially, although a simple subset of the methods is all that is required in order to get the library up and running with your display (constructor, begin, write).
 
@@ -172,7 +172,7 @@ Provide printf() and putchar() functions
 
 Add 7 segment display chip (7447/5447) routines
 
-Test common anode (buy SL-1256 display)
+Test common cathode (buy SL-1256 display)
 
 Add functionality for extra mega pins
 
