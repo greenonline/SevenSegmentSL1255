@@ -1,13 +1,10 @@
-# SevenSegmentSL1255
-Arduino Library for Sanyo SL-1255, SL-1256, SL-2255, SL-2256 Seven Segment LED Displays
-
         *** SevenSegment SL-1255-30 Library ***
        =========================================
 
         *** Readme ***
        ================
 
-       Version : 0.5.7
+       Version : 0.5.7.1
 
 Brief
 =====
@@ -104,7 +101,7 @@ The file CommandReference.txt is a simplified form of the header file, SevenSegm
 Constructor Methods
 ===================
 
-There are five various overridden constructors. Please note that all constructors configure the pins for both digits. The reason is that this library is designed for the two digital SL-1255 display. If you only want to configure the pins for just one digit, then use a sign digit version of this library. Here is a list of the constructor types:
+There are five various overridden constructors. Please note that all constructors configure the pins for both digits. The reason is that this library is designed for the two digital SL-1255 display. If you only want to configure the pins for just one digit, then use a single digit version of this library. Here is a list of the constructor types:
 
 Default
 -------
