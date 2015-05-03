@@ -182,48 +182,52 @@ const uint8_t SevenSegmentSL1255::_hexTable[16] = {alphanum_0, alphanum_1, alpha
 const uint8_t SevenSegmentSL1255::_decTable[10] = {alphanum_0, alphanum_1, alphanum_2, alphanum_3, alphanum_4, alphanum_5, alphanum_6, alphanum_7, alphanum_8, alphanum_9}; //for decWrite()
 const uint8_t SevenSegmentSL1255::_octTable[8] = {alphanum_0, alphanum_1, alphanum_2, alphanum_3, alphanum_4, alphanum_5, alphanum_6, alphanum_7}; //for octWrite()
 
-//Default Constructor
-SevenSegmentSL1255::SevenSegmentSL1255(){
+// Constructor Methods
+
+// Default Constructor
+SevenSegmentSL1255::SevenSegmentSL1255(void){
   init();
 }
 
-//Constructor for digit 1
+// Constructor for digit 1
 SevenSegmentSL1255::SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1){
   init(a1, b1, c1, d1, e1, f1, g1);
 }
 
-//Constructor for digits 1 and 2
+// Constructor for digits 1 and 2
 SevenSegmentSL1255::SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2){
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2);
 }
 
-//Constructor for digits 1 and 2 and Seven Segment Type
+// Constructor for digits 1 and 2 and Seven Segment Type
 SevenSegmentSL1255::SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType){
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2, ssType);
 }
 
-//Constructor for digits 1 and 2 and logical On Value and Off Value
+// Constructor for digits 1 and 2 and logical On Value and Off Value
 SevenSegmentSL1255::SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue){
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2, onValue, offValue);
 }
 
+// Initialiser Methods
+// Called by constructors
 
-//Initialiser called by default constructor
+// Initialiser called by default constructor
 void SevenSegmentSL1255::init(void) {
   init(default_a1, default_b1, default_c1, default_d1, default_e1, default_f1, default_g1);
 }
 
-//Initialiser called by constructor for digit 1
+// Initialiser called by constructor for digit 1
 void SevenSegmentSL1255::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1) {
   init(a1, b1, c1, d1, e1, f1, g1, default_a2, default_b2, default_c2, default_d2, default_e2, default_f2, default_g2);
 }
 
-//Initialiser called by constructor for digits 1 and 2
+// Initialiser called by constructor for digits 1 and 2
 void SevenSegmentSL1255::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2) {
   init(a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2, g2, default_onValue, default_offValue);
 }
 
-//Initialiser called by constructor for digits 1 and 2 and Seven Segment Type
+// Initialiser called by constructor for digits 1 and 2 and Seven Segment Type
 void SevenSegmentSL1255::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType) {
 
   _ssType=ssType;
@@ -242,7 +246,7 @@ void SevenSegmentSL1255::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, ui
   //could call init (a1...g2, on, off) in this if construct
 }
 
-//Initialiser called by constructor for digits 1 and 2 and and logical On Value and Off Value
+// Initialiser called by constructor for digits 1 and 2 and logical On Value and Off Value
 void SevenSegmentSL1255::init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue) {
   _a1=a1;
   _b1=b1;
@@ -287,9 +291,9 @@ void SevenSegmentSL1255::begin(void) {
   pinMode(_g2, OUTPUT);
 }
 
-//Direct draw Methods
+// Direct draw Methods
 // *** Most Significant Digit ***
-// Hex chars (2nd digit)
+// Hex chars (1st digit)
 
 //The 'x' notation methods call the direct draw draw_<character>_<digit> methods
 //Draw character '0' to left hand (MSD) digit
@@ -602,7 +606,7 @@ void SevenSegmentSL1255::draw_fx(void) {
   digitalWrite(_g1,_onValue);
 */}
 
-// Extra Letters
+// Extra Letters (1st digit)
 
 //The 'x' notation methods call the direct draw draw_<character>_<digit> methods
 
@@ -1166,13 +1170,2872 @@ void SevenSegmentSL1255::draw_zx(void) {
   digitalWrite(_g1,_onValue);
 */}
 
-// Symbols
+// Symbols (1st digit)
 //Draw degree character to left hand (MSD) digit
 void SevenSegmentSL1255::draw_degreex(void) {
   draw_degree_1();
 }
 
-// Bitmap
+// *** Least Significant Digit ***
+// Hex chars (2nd digit)
+
+void SevenSegmentSL1255::draw_x0(void) {
+  draw_0_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/
+}
+
+void SevenSegmentSL1255::draw_x1(void) {
+  draw_1_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_x2(void) {
+  draw_2_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x3(void) {
+  draw_3_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x4(void) {
+  draw_4_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x5(void) {
+  draw_5_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x6(void) {
+  draw_6_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x7(void) {
+  draw_7_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_x8(void) {
+  draw_8_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x9(void) {
+  draw_9_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xA(void) {
+  draw_A_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xa(void) {
+  draw_a_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xB(void) {
+  draw_B_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xb(void) {
+  draw_b_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xC(void) {
+  draw_C_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xc(void) {
+  draw_c_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xD(void) {
+  draw_D_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xd(void) {
+  draw_d_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xE(void) {
+  draw_E_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xe(void) {
+  draw_e_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xF(void) {
+  draw_F_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xf(void) {
+  draw_f_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+// Extra Letters (2nd digit)
+
+void SevenSegmentSL1255::draw_xG(void) {
+  draw_G_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xg(void) {
+  draw_g_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xH(void) {
+  draw_H_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xh(void) {
+  draw_h_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xI(void) {
+  draw_I_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xi(void) {
+  draw_i_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xJ(void) {
+  draw_J_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xj(void) {
+  draw_j_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xK(void) {
+  draw_K_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xk(void) {
+  draw_k_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xL(void) {
+  draw_L_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xl(void) {
+  draw_l_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xM(void) {
+  draw_M_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xm(void) {
+  draw_m_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xN(void) {
+  draw_N_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xn(void) {
+  draw_n_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xO(void) {
+  draw_O_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xo(void) {
+  draw_o_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xP(void) {
+  draw_P_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xp(void) {
+  draw_p_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xQ(void) {
+  draw_Q_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xq(void) {
+  draw_q_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xR(void) {
+  draw_R_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xr(void) {
+  draw_r_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xS(void) {
+  draw_S_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xs(void) {
+  draw_s_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xT(void) {
+  draw_T_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xt(void) {
+  draw_t_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xU(void) {
+  draw_U_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xu(void) {
+  draw_u_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xV(void) {
+  draw_V_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xv(void) {
+  draw_v_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xW(void) {
+  draw_W_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xw(void) {
+  draw_w_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_xX(void) {
+  draw_X_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+//void SevenSegmentSL1255::draw_xx(void) {
+//  digitalWrite(_a2,_offValue);
+//  digitalWrite(_b2,_onValue);
+//  digitalWrite(_c2,_onValue);
+//  digitalWrite(_d2,_offValue);
+//  digitalWrite(_e2,_onValue);
+//  digitalWrite(_f2,_onValue);
+//  digitalWrite(_g2,_onValue);
+//}
+
+void SevenSegmentSL1255::draw_xY(void) {
+  draw_Y_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xy(void) {
+  draw_y_2();
+
+/*
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xZ(void) {
+  draw_Z_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_xz(void) {
+  draw_z_2();
+
+/*
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+// Symbols (2nd digit)
+void SevenSegmentSL1255::draw_xdegree(void) {
+  draw_degree_2();
+}
+
+
+// Number placement
+// Direct Draw methods using digit number in method name
+// *** Most Significant Digit ***
+// Hex chars (1st digit)
+
+
+void SevenSegmentSL1255::draw_0_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_1_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_2_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_3_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_4_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_5_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_6_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_7_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_8_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_9_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_A_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_a_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_B_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_b_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_C_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_c_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_D_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_d_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_E_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_e_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_F_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_f_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+// Extra Letters (1st digit)
+
+void SevenSegmentSL1255::draw_G_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_g_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_H_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_h_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_I_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_i_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_J_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_j_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_K_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_k_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_L_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_l_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_M_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_m_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_N_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_n_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_O_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_o_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_P_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_p_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_Q_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_q_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_R_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_r_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_S_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_s_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_T_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_t_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_U_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_u_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_V_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_v_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_W_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_w_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_offValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_offValue);
+}
+
+void SevenSegmentSL1255::draw_X_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_x_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_Y_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_y_1(void) {
+  digitalWrite(_a1,_offValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_onValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_Z_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+void SevenSegmentSL1255::draw_z_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_onValue);
+  digitalWrite(_e1,_onValue);
+  digitalWrite(_f1,_offValue);
+  digitalWrite(_g1,_onValue);
+}
+
+// Symbols (1st digit)
+void SevenSegmentSL1255::draw_degree_1(void) {
+  digitalWrite(_a1,_onValue);
+  digitalWrite(_b1,_onValue);
+  digitalWrite(_c1,_offValue);
+  digitalWrite(_d1,_offValue);
+  digitalWrite(_e1,_offValue);
+  digitalWrite(_f1,_onValue);
+  digitalWrite(_g1,_onValue);
+}
+
+// Number placement
+// Direct Draw methods using digit number in method name
+// *** Least Significant Digit ***
+// Hex chars (2nd digit)
+
+
+void SevenSegmentSL1255::draw_0_0(void) {
+  draw_0_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_1_0(void) {
+  draw_1_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_2_0(void) {
+  draw_2_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_3_0(void) {
+  draw_3_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_4_0(void) {
+  draw_4_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_5_0(void) {
+  draw_5_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_6_0(void) {
+  draw_6_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_7_0(void) {
+  draw_7_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_8_0(void) {
+  draw_8_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_9_0(void) {
+  draw_9_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_A_0(void) {
+  draw_A_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_a_0(void) {
+  draw_a_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_B_0(void) {
+  draw_B_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_b_0(void) {
+  draw_b_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_C_0(void) {
+  draw_C_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_c_0(void) {
+  draw_c_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_D_0(void) {
+  draw_D_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_d_0(void) {
+  draw_d_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_E_0(void) {
+  draw_E_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_e_0(void) {
+  draw_e_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_F_0(void) {
+  draw_F_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_f_0(void) {
+  draw_f_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+// Extra Letters (2nd digit)
+
+void SevenSegmentSL1255::draw_G_0(void) {
+  draw_G_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_g_0(void) {
+  draw_g_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_H_0(void) {
+  draw_H_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_h_0(void) {
+  draw_h_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_I_0(void) {
+  draw_I_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_i_0(void) {
+  draw_i_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_J_0(void) {
+  draw_J_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_j_0(void) {
+  draw_j_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_K_0(void) {
+  draw_K_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_k_0(void) {
+  draw_k_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_L_0(void) {
+  draw_L_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_l_0(void) {
+  draw_l_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_M_0(void) {
+  draw_M_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_m_0(void) {
+  draw_m_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_N_0(void) {
+  draw_N_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_n_0(void) {
+  draw_n_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_O_0(void) {
+  draw_O_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_o_0(void) {
+  draw_o_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_P_0(void) {
+  draw_P_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_p_0(void) {
+  draw_p_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_Q_0(void) {
+  draw_Q_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_q_0(void) {
+  draw_q_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_R_0(void) {
+  draw_R_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_r_0(void) {
+  draw_r_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_S_0(void) {
+  draw_S_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_s_0(void) {
+  draw_s_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_T_0(void) {
+  draw_T_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_t_0(void) {
+  draw_t_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_U_0(void) {
+  draw_U_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_u_0(void) {
+  draw_u_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_V_0(void) {
+  draw_V_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_v_0(void) {
+  draw_v_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_W_0(void) {
+  draw_W_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_w_0(void) {
+  draw_w_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+*/}
+
+void SevenSegmentSL1255::draw_X_0(void) {
+  draw_X_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_x_0(void) {
+  draw_x_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_Y_0(void) {
+  draw_Y_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_y_0(void) {
+  draw_y_2();
+
+/*  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_Z_0(void) {
+  draw_Z_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+void SevenSegmentSL1255::draw_z_0(void) {
+  draw_z_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+// Symbols (2nd digit)
+void SevenSegmentSL1255::draw_degree_0(void) {
+  draw_degree_2();
+
+/*  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+*/}
+
+
+// Number placement
+// Direct Draw methods using digit number in method name
+// *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
+// Hex chars (2nd digit)
+
+
+void SevenSegmentSL1255::draw_0_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_1_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_2_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_3_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_4_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_5_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_6_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_7_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_8_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_9_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_A_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_a_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_B_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_b_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_C_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_c_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_D_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_d_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_E_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_e_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_F_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_f_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+// Extra Letters (2nd digit)
+
+void SevenSegmentSL1255::draw_G_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_g_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_H_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_h_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_I_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_i_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_J_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_j_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_K_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_k_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_L_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_l_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_M_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_m_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_N_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_n_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_O_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_o_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_P_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_p_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_Q_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_q_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_R_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_r_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_S_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_s_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_T_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_t_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_U_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_u_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_V_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_v_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_W_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_w_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_offValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_offValue);
+}
+
+void SevenSegmentSL1255::draw_X_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_x_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_Y_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_y_2(void) {
+  digitalWrite(_a2,_offValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_onValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_Z_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+void SevenSegmentSL1255::draw_z_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_onValue);
+  digitalWrite(_e2,_onValue);
+  digitalWrite(_f2,_offValue);
+  digitalWrite(_g2,_onValue);
+}
+
+// Symbols (2nd digit)
+void SevenSegmentSL1255::draw_degree_2(void) {
+  digitalWrite(_a2,_onValue);
+  digitalWrite(_b2,_onValue);
+  digitalWrite(_c2,_offValue);
+  digitalWrite(_d2,_offValue);
+  digitalWrite(_e2,_offValue);
+  digitalWrite(_f2,_onValue);
+  digitalWrite(_g2,_onValue);
+}
+
+// Bitmap Methods
 /*
 void SevenSegmentSL1255::draw_bitmapx(uint8_t character) {
 	if ((character >> 0) & 1)
@@ -1290,13 +4153,13 @@ void SevenSegmentSL1255::drawInvert1(uint8_t segmentMapCode) { //calls draw_bitm
 	draw_bitmapInvert1(segmentMapCode);
 }
 
-// Put
+// Put Methods
 //void SevenSegmentSL1255::putc(char character) {}
 //void SevenSegmentSL1255::putchar(char character){}
 
-// Write Routines
+// Write Methods
 
-//Write to Digit 2 (Least Significant Digit) - Using SL-1255 notion
+// Write to Digit 2 (Least Significant Digit) - Using SL-1255 notion
 // Write ASCII character to Digit 2 (LSD)
 void SevenSegmentSL1255::digit2CharWrite(char character) {
 	uint8_t value = character;
@@ -1344,7 +4207,7 @@ void SevenSegmentSL1255::write2(char character) {
 	digit2Write(character);
 }
 
-//Write to Digit 0 (Least Significant Digit) - Using standard notion
+// Write to Digit 0 (Least Significant Digit) - Using standard notion
 // Write ASCII character to Digit 0 (LSD)
 void SevenSegmentSL1255::digit0CharWrite(char character) {
 	uint8_t value = character;
@@ -1392,7 +4255,7 @@ void SevenSegmentSL1255::write0(char character) {
 	digit0Write(character);
 }
 
-//Write to Digit 1 (Most Significant Digit) - Using standard notion
+// Write to Digit 1 (Most Significant Digit) - Using standard notion
 // Write ASCII character to Digit 1 (MSD)
 void SevenSegmentSL1255::digit1CharWrite(char character) {
 	uint8_t value = character;
@@ -1469,6 +4332,43 @@ void SevenSegmentSL1255::write(char characters[]) {
 	}
 
 }
+
+void SevenSegmentSL1255::write(uint8_t value, uint8_t digit) {
+	//if value<=9
+	if (value <= 9) {
+		switch (digit) {
+			case 0 :
+				digit0Write(value);
+				break;
+			case 1 :
+				digit1Write(value);
+				break;
+			case 2 :
+				digit2Write(value);
+				break;
+			default :
+				break;
+		}
+    }
+}
+
+void SevenSegmentSL1255::write(char character, uint8_t digit) {
+	switch (digit) {
+		case 0 :
+			digit0Write(character);
+			break;
+		case 1 :
+			digit1Write(character);
+			break;
+		case 2 :
+			digit2Write(character);
+			break;
+		default :
+			break;
+	}
+}
+
+// Scroll Methods
 
 //scroll() is a default left scroll method
 void SevenSegmentSL1255::scroll(char characters[]) {
@@ -1608,42 +4508,9 @@ void SevenSegmentSL1255::scrollRight(char characters[], int delayBetweenScroll) 
 	delay(delayBetweenScroll);		// Delay before ending scroll
 }
 
-void SevenSegmentSL1255::write(uint8_t value, uint8_t digit) {
-	//if value<=9
-	if (value <= 9) {
-		switch (digit) {
-			case 0 :
-				digit0Write(value);
-				break;
-			case 1 :
-				digit1Write(value);
-				break;
-			case 2 :
-				digit2Write(value);
-				break;
-			default :
-				break;
-		}
-    }
-}
-
-void SevenSegmentSL1255::write(char character, uint8_t digit) {
-	switch (digit) {
-		case 0 :
-			digit0Write(character);
-			break;
-		case 1 :
-			digit1Write(character);
-			break;
-		case 2 :
-			digit2Write(character);
-			break;
-		default :
-			break;
-	}
-}
-
-// Effects
+// Effects Methods
+// *** Most Significant Digit ***
+// Effects (1st digit)
 
 void SevenSegmentSL1255::effect_1(uint8_t index) {
 	int defaultDelay = default_delay;
@@ -2286,824 +5153,12 @@ void SevenSegmentSL1255::rotateCircleAnticlockInvert_1(int totaldelay){
 }
 
 
-//End Rotate First Digit
+// End Rotate First Digit
 
+
+// Effects Methods
 // *** Least Significant Digit ***
-// Hex chars (1st digit)
-
-void SevenSegmentSL1255::draw_x0(void) {
-  draw_0_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/
-}
-
-void SevenSegmentSL1255::draw_x1(void) {
-  draw_1_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_x2(void) {
-  draw_2_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_x3(void) {
-  draw_3_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_x4(void) {
-  draw_4_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_x5(void) {
-  draw_5_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_x6(void) {
-  draw_6_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_x7(void) {
-  draw_7_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_x8(void) {
-  draw_8_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_x9(void) {
-  draw_9_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xA(void) {
-  draw_A_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xa(void) {
-  draw_a_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xB(void) {
-  draw_B_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xb(void) {
-  draw_b_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xC(void) {
-  draw_C_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xc(void) {
-  draw_c_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xD(void) {
-  draw_D_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xd(void) {
-  draw_d_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xE(void) {
-  draw_E_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xe(void) {
-  draw_e_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xF(void) {
-  draw_F_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xf(void) {
-  draw_f_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-// Extra Letters
-
-void SevenSegmentSL1255::draw_xG(void) {
-  draw_G_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xg(void) {
-  draw_g_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xH(void) {
-  draw_H_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xh(void) {
-  draw_h_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xI(void) {
-  draw_I_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xi(void) {
-  draw_i_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xJ(void) {
-  draw_J_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xj(void) {
-  draw_j_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xK(void) {
-  draw_K_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xk(void) {
-  draw_k_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xL(void) {
-  draw_L_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xl(void) {
-  draw_l_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xM(void) {
-  draw_M_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xm(void) {
-  draw_m_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xN(void) {
-  draw_N_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xn(void) {
-  draw_n_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xO(void) {
-  draw_O_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xo(void) {
-  draw_o_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xP(void) {
-  draw_P_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xp(void) {
-  draw_p_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xQ(void) {
-  draw_Q_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xq(void) {
-  draw_q_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xR(void) {
-  draw_R_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xr(void) {
-  draw_r_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xS(void) {
-  draw_S_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xs(void) {
-  draw_s_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xT(void) {
-  draw_T_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xt(void) {
-  draw_t_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xU(void) {
-  draw_U_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xu(void) {
-  draw_u_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xV(void) {
-  draw_V_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xv(void) {
-  draw_v_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xW(void) {
-  draw_W_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xw(void) {
-  draw_w_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
-
-void SevenSegmentSL1255::draw_xX(void) {
-  draw_X_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-//void SevenSegmentSL1255::draw_xx(void) {
-//  digitalWrite(_a2,_offValue);
-//  digitalWrite(_b2,_onValue);
-//  digitalWrite(_c2,_onValue);
-//  digitalWrite(_d2,_offValue);
-//  digitalWrite(_e2,_onValue);
-//  digitalWrite(_f2,_onValue);
-//  digitalWrite(_g2,_onValue);
-//*/}
-
-void SevenSegmentSL1255::draw_xY(void) {
-  draw_Y_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xy(void) {
-  draw_y_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xZ(void) {
-  draw_Z_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-void SevenSegmentSL1255::draw_xz(void) {
-  draw_z_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
-
-// Symbols
-void SevenSegmentSL1255::draw_xdegree(void) {
-  draw_degree_0();
-}
-
-
-// Effects (1st digit)
+// Effects (2nd digit)
 
 void SevenSegmentSL1255::effect_0(uint8_t index) {
 	int defaultDelay = default_delay;
@@ -3732,8 +5787,14 @@ void SevenSegmentSL1255::rotateCircleAnticlockInvert_0(int totaldelay){
 //  delay(totaldelay);			 //of the previous effect
 }
 
-// Using SL-1255 Notion of LSD Digit 0 is Digit 2
-// Effects (1st digit) (Least Significant)
+
+// End Rotate Second Digit
+
+
+// Effects Methods
+// *** Least Significant Digit ***
+// Using SL-1255 Notion of LSD (Digit 0) is Digit 2
+// Effects (2nd digit)
 
 void SevenSegmentSL1255::effect_2(uint8_t index) {
 	int defaultDelay = default_delay;
@@ -4375,1926 +6436,14 @@ void SevenSegmentSL1255::rotateCircleAnticlockInvert_2(int totaldelay){
 }
 
 
+// End Rotate Second Digit
 
-// Number placement
-// Direct Draw methods using digit number in method name
-// *** Most Significant Digit ***
-// Hex chars (2nd digit)
 
-
-void SevenSegmentSL1255::draw_0_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_1_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_2_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_3_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_4_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_5_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_6_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_7_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_8_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_9_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_A_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_a_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_B_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_b_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_C_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_c_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_D_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_d_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_E_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_e_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_F_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_f_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-// Extra Letters
-
-void SevenSegmentSL1255::draw_G_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_g_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_H_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_h_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_I_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_i_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_J_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_j_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_K_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_k_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_L_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_l_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_M_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_m_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_N_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_n_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_O_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_o_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_P_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_p_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Q_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_q_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_R_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_r_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_S_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_s_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_T_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_t_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_U_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_u_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_V_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_v_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_W_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_w_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-}
-
-void SevenSegmentSL1255::draw_X_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_x_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Y_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_y_1(void) {
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Z_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-void SevenSegmentSL1255::draw_z_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-}
-
-// Symbols
-void SevenSegmentSL1255::draw_degree_1(void) {
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-}
-
-// Number placement
-// Direct Draw methods using digit number in method name
-// *** Least Significant Digit ***
-// Hex chars (1st digit)
-
-
-void SevenSegmentSL1255::draw_0_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_1_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_2_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_3_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_4_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_5_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_6_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_7_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_8_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_9_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_A_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_a_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_B_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_b_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_C_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_c_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_D_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_d_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_E_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_e_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_F_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_f_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-// Extra Letters
-
-void SevenSegmentSL1255::draw_G_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_g_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_H_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_h_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_I_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_i_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_J_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_j_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_K_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_k_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_L_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_l_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_M_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_m_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_N_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_n_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_O_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_o_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_P_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_p_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Q_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_q_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_R_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_r_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_S_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_s_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_T_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_t_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_U_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_u_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_V_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_v_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_W_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_w_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_X_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_x_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Y_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_y_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Z_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_z_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-// Symbols
-void SevenSegmentSL1255::draw_degree_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-
-// Number placement
-// Direct Draw methods using digit number in method name
-// *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
-// Hex chars (1st digit)
-
-
-void SevenSegmentSL1255::draw_0_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_1_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_2_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_3_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_4_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_5_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_6_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_7_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_8_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_9_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_A_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_a_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_B_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_b_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_C_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_c_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_D_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_d_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_E_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_e_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_F_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_f_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-// Extra Letters
-
-void SevenSegmentSL1255::draw_G_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_g_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_H_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_h_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_I_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_i_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_J_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_j_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_K_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_k_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_L_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_l_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_M_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_m_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_N_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_n_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_O_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_o_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_P_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_p_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Q_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_q_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_R_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_r_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_S_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_s_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_T_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_t_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_U_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_u_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_V_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_v_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_W_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_w_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-}
-
-void SevenSegmentSL1255::draw_X_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_x_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Y_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_y_2(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_Z_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-void SevenSegmentSL1255::draw_z_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-}
-
-// Symbols
-void SevenSegmentSL1255::draw_degree_2(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-}
-
-// Simultaneous Effects on digits 1 and 2
+// Effects Methods
+// *** Most and Least Significant Digit ***
+// Using SL-1255 Notion of MSD is Digit 1 and LSD (Digit 0) is Digit 2
+// Effects (1st and 2nd digits)
+// Simultaneous Effects on digits 1 and 2 (1 + 2 = 3)
 
 void SevenSegmentSL1255::effect_3(uint8_t index) {
 	int defaultDelay = default_delay;
@@ -7171,15 +7320,75 @@ void SevenSegmentSL1255::rotateCircleAnticlockInvert_3(int totaldelay){
 }
 
 
-//Get State
+// End Rotate Both Digits
+
+
+// Get/Set Pin State Methods
 // pass pin number 2, 3, 4, ..., 16
 uint8_t SevenSegmentSL1255::getPinState(uint8_t pin){
 	return (digitalRead(pin));
 }
 
+// pass pin number 2, 3, 4, ..., 16
+void SevenSegmentSL1255::setPinState(uint8_t pin, uint8_t value){
+	digitalWrite(pin,value);
+}
+
+// Get Pin Number from Segment Name Method
+// static 2 (for C99) force two characters array (should be 3?)
+uint8_t SevenSegmentSL1255::getPinFromSegment(char segment[/*static 2*/]){
+	uint8_t pin;
+	if (!strcmp(segment, "a0"))
+			pin=_a2;
+	if (!strcmp(segment, "b0"))
+			pin=_b2;
+	if (!strcmp(segment, "c0"))
+			pin=_c2;
+	if (!strcmp(segment, "d0"))
+			pin=_d2;
+	if (!strcmp(segment, "e0"))
+			pin=_e2;
+	if (!strcmp(segment, "f0"))
+			pin=_f2;
+	if (!strcmp(segment, "g0"))
+			pin=_g2;
+	if (!strcmp(segment, "a1"))
+			pin=_a1;
+	if (!strcmp(segment, "b1"))
+			pin=_b1;
+	if (!strcmp(segment, "c1"))
+			pin=_c1;
+	if (!strcmp(segment, "d1"))
+			pin=_d1;
+	if (!strcmp(segment, "e1"))
+			pin=_e1;
+	if (!strcmp(segment, "f1"))
+			pin=_f1;
+	if (!strcmp(segment, "g1"))
+			pin=_g1;
+	if (!strcmp(segment, "a2"))
+			pin=_a2;
+	if (!strcmp(segment, "b2"))
+			pin=_b2;
+	if (!strcmp(segment, "c2"))
+			pin=_c2;
+	if (!strcmp(segment, "d2"))
+			pin=_d2;
+	if (!strcmp(segment, "e2"))
+			pin=_e2;
+	if (!strcmp(segment, "f2"))
+			pin=_f2;
+	if (!strcmp(segment, "g2"))
+			pin=_g2;
+	return (pin);
+}
+
+// Get/Set Segment State Methods
+
 // pass segment name a1...g1, a2...g2
 /*
-uint8_t SevenSegmentSL1255::getSegmentState(char segment[]){
+// static 2 (for C99) force two characters array (should be 3?)
+//uint8_t SevenSegmentSL1255::getSegmentState(char segment[static 2]){
 	uint8_t pin;
 	switch (segment) {
 		case 'a0' :
@@ -7254,7 +7463,8 @@ uint8_t SevenSegmentSL1255::getSegmentState(char segment[]){
 */
 
 // pass segment name a1...g1, a2...g2
-uint8_t SevenSegmentSL1255::getSegmentState(char segment[]){
+// static 2 (for C99) force two characters array (should be 3?)
+uint8_t SevenSegmentSL1255::getSegmentState(char segment[/*static 2*/]){
 	uint8_t pin;
 	pin = getPinFromSegment(segment);
 /*
@@ -7304,152 +7514,9 @@ uint8_t SevenSegmentSL1255::getSegmentState(char segment[]){
 	return (digitalRead(pin));
 }
 
-// static 2 (for C99) force two characters array (should be 3?)
-uint8_t SevenSegmentSL1255::getPinFromSegment(char segment[/*static 2*/]){
-	uint8_t pin;
-	if (!strcmp(segment, "a0"))
-			pin=_a2;
-	if (!strcmp(segment, "b0"))
-			pin=_b2;
-	if (!strcmp(segment, "c0"))
-			pin=_c2;
-	if (!strcmp(segment, "d0"))
-			pin=_d2;
-	if (!strcmp(segment, "e0"))
-			pin=_e2;
-	if (!strcmp(segment, "f0"))
-			pin=_f2;
-	if (!strcmp(segment, "g0"))
-			pin=_g2;
-	if (!strcmp(segment, "a1"))
-			pin=_a1;
-	if (!strcmp(segment, "b1"))
-			pin=_b1;
-	if (!strcmp(segment, "c1"))
-			pin=_c1;
-	if (!strcmp(segment, "d1"))
-			pin=_d1;
-	if (!strcmp(segment, "e1"))
-			pin=_e1;
-	if (!strcmp(segment, "f1"))
-			pin=_f1;
-	if (!strcmp(segment, "g1"))
-			pin=_g1;
-	if (!strcmp(segment, "a2"))
-			pin=_a2;
-	if (!strcmp(segment, "b2"))
-			pin=_b2;
-	if (!strcmp(segment, "c2"))
-			pin=_c2;
-	if (!strcmp(segment, "d2"))
-			pin=_d2;
-	if (!strcmp(segment, "e2"))
-			pin=_e2;
-	if (!strcmp(segment, "f2"))
-			pin=_f2;
-	if (!strcmp(segment, "g2"))
-			pin=_g2;
-	return (pin);
-}
-
-// get the state for each segment
-// of digit 1
-uint8_t SevenSegmentSL1255::getState_a1(void) {
-	return (digitalRead(_a1));
-}
-
-uint8_t SevenSegmentSL1255::getState_b1(void) {
-	return(digitalRead(_b1));
-}
-
-uint8_t SevenSegmentSL1255::getState_c1(void) {
-	return(digitalRead(_c1));
-}
-
-uint8_t SevenSegmentSL1255::getState_d1(void) {
-	return(digitalRead(_d1));
-}
-
-uint8_t SevenSegmentSL1255::getState_e1(void) {
-	return(digitalRead(_e1));
-}
-
-uint8_t SevenSegmentSL1255::getState_f1(void) {
-	return(digitalRead(_f1));
-}
-
-uint8_t SevenSegmentSL1255::getState_g1(void) {
-	return(digitalRead(_g1));
-}
-
-// get the state for each segment
-// of digit 2 (aka digit 0)
-uint8_t SevenSegmentSL1255::getState_a0(void) {
-	return(digitalRead(_a2));
-}
-
-uint8_t SevenSegmentSL1255::getState_b0(void) {
-	return(digitalRead(_b2));
-}
-
-uint8_t SevenSegmentSL1255::getState_c0(void) {
-	return(digitalRead(_c2));
-}
-
-uint8_t SevenSegmentSL1255::getState_d0(void) {
-	return(digitalRead(_d2));
-}
-
-uint8_t SevenSegmentSL1255::getState_e0(void) {
-	return(digitalRead(_e2));
-}
-
-uint8_t SevenSegmentSL1255::getState_f0(void) {
-	return(digitalRead(_f2));
-}
-
-uint8_t SevenSegmentSL1255::getState_g0(void) {
-	return(digitalRead(_g2));
-}
-
-// get the state for each segment
-// of digit 2 (aka digit 0)
-uint8_t SevenSegmentSL1255::getState_a2(void) {
-	return(digitalRead(_a2));
-}
-
-uint8_t SevenSegmentSL1255::getState_b2(void) {
-	return(digitalRead(_b2));
-}
-
-uint8_t SevenSegmentSL1255::getState_c2(void) {
-	return(digitalRead(_c2));
-}
-
-uint8_t SevenSegmentSL1255::getState_d2(void) {
-	return(digitalRead(_d2));
-}
-
-uint8_t SevenSegmentSL1255::getState_e2(void) {
-	return(digitalRead(_e2));
-}
-
-uint8_t SevenSegmentSL1255::getState_f2(void) {
-	return(digitalRead(_f2));
-}
-
-uint8_t SevenSegmentSL1255::getState_g2(void) {
-	return(digitalRead(_g2));
-}
-
-//Set State
-// pass pin number 2, 3, 4, ..., 16
-void SevenSegmentSL1255::setPinState(uint8_t pin, uint8_t value){
-	digitalWrite(pin,value);
-}
-
 // pass segment name a1...g1, a2...g2
-void SevenSegmentSL1255::setSegmentState(char segment[], uint8_t value){
+// static 2 (for C99) force two characters array (should be 3?)
+void SevenSegmentSL1255::setSegmentState(char segment[/*static 2*/], uint8_t value){
 	uint8_t pin;
 	pin = getPinFromSegment(segment);
 /*
@@ -7525,6 +7592,98 @@ void SevenSegmentSL1255::setSegmentState(char segment[], uint8_t value){
 	digitalWrite(pin,value);
 }
 
+// Get State Methods
+// get the state for each segment
+// of digit 1
+uint8_t SevenSegmentSL1255::getState_a1(void) {
+	return (digitalRead(_a1));
+}
+
+uint8_t SevenSegmentSL1255::getState_b1(void) {
+	return(digitalRead(_b1));
+}
+
+uint8_t SevenSegmentSL1255::getState_c1(void) {
+	return(digitalRead(_c1));
+}
+
+uint8_t SevenSegmentSL1255::getState_d1(void) {
+	return(digitalRead(_d1));
+}
+
+uint8_t SevenSegmentSL1255::getState_e1(void) {
+	return(digitalRead(_e1));
+}
+
+uint8_t SevenSegmentSL1255::getState_f1(void) {
+	return(digitalRead(_f1));
+}
+
+uint8_t SevenSegmentSL1255::getState_g1(void) {
+	return(digitalRead(_g1));
+}
+
+// get the state for each segment
+// of digit 0 (aka digit 2)
+uint8_t SevenSegmentSL1255::getState_a0(void) {
+	return(digitalRead(_a2));
+}
+
+uint8_t SevenSegmentSL1255::getState_b0(void) {
+	return(digitalRead(_b2));
+}
+
+uint8_t SevenSegmentSL1255::getState_c0(void) {
+	return(digitalRead(_c2));
+}
+
+uint8_t SevenSegmentSL1255::getState_d0(void) {
+	return(digitalRead(_d2));
+}
+
+uint8_t SevenSegmentSL1255::getState_e0(void) {
+	return(digitalRead(_e2));
+}
+
+uint8_t SevenSegmentSL1255::getState_f0(void) {
+	return(digitalRead(_f2));
+}
+
+uint8_t SevenSegmentSL1255::getState_g0(void) {
+	return(digitalRead(_g2));
+}
+
+// get the state for each segment
+// of digit 2 (aka digit 0)
+uint8_t SevenSegmentSL1255::getState_a2(void) {
+	return(digitalRead(_a2));
+}
+
+uint8_t SevenSegmentSL1255::getState_b2(void) {
+	return(digitalRead(_b2));
+}
+
+uint8_t SevenSegmentSL1255::getState_c2(void) {
+	return(digitalRead(_c2));
+}
+
+uint8_t SevenSegmentSL1255::getState_d2(void) {
+	return(digitalRead(_d2));
+}
+
+uint8_t SevenSegmentSL1255::getState_e2(void) {
+	return(digitalRead(_e2));
+}
+
+uint8_t SevenSegmentSL1255::getState_f2(void) {
+	return(digitalRead(_f2));
+}
+
+uint8_t SevenSegmentSL1255::getState_g2(void) {
+	return(digitalRead(_g2));
+}
+
+// Set State Methods
 // set the state for each segment
 // of digit 1
 void SevenSegmentSL1255::setState_a1(uint8_t value) {
@@ -7556,7 +7715,7 @@ void SevenSegmentSL1255::setState_g1(uint8_t value) {
 }
 
 // set the state for each segment
-// of digit 2 (aka digit 0)
+// of digit 0 (aka digit 2)
 void SevenSegmentSL1255::setState_a0(uint8_t value) {
 	digitalWrite(_a2,value);
 }
@@ -7615,7 +7774,11 @@ void SevenSegmentSL1255::setState_g2(uint8_t value) {
 	digitalWrite(_g2,value);
 }
 
-//Getters
+// Accessors
+// getters methods
+
+// get the pin assignments for each segment
+// of digit 1
 uint8_t SevenSegmentSL1255::get_a1(void) {
 	return (_a1);
 }
@@ -7644,6 +7807,8 @@ uint8_t SevenSegmentSL1255::get_g1(void) {
 	return(_g1);
 }
 
+// get the pin assignments for each segment
+// of digit 0 (aka digit 2)
 uint8_t SevenSegmentSL1255::get_a0(void) {
 	return(_a2);
 }
@@ -7672,6 +7837,8 @@ uint8_t SevenSegmentSL1255::get_g0(void) {
 	return(_g2);
 }
 
+// get the pin assignments for each segment
+// of digit 2 (aka digit 0)
 uint8_t SevenSegmentSL1255::get_a2(void) {
 	return(_a2);
 }
@@ -7700,6 +7867,7 @@ uint8_t SevenSegmentSL1255::get_g2(void) {
 	return(_g2);
 }
 
+// get misc class parameters
 uint8_t SevenSegmentSL1255::get_onValue(void) {
 	return(_onValue);
 }
@@ -7712,7 +7880,11 @@ uint8_t SevenSegmentSL1255::get_ssType(void) {
 	return(_ssType);
 }
 
-//Setters
+// Accessors
+// Getters methods
+
+// set the pin assignments for each segment
+// of digit 1
 void SevenSegmentSL1255::set_a1(uint8_t value) {
 	_a1=value;
 }
@@ -7741,6 +7913,8 @@ void SevenSegmentSL1255::set_g1(uint8_t value) {
 	_g1=value;
 }
 
+// set the pin assignments for each segment
+// of digit 0 (aka digit 2)
 void SevenSegmentSL1255::set_a0(uint8_t value) {
 	_a2=value;
 }
@@ -7769,6 +7943,8 @@ void SevenSegmentSL1255::set_g0(uint8_t value) {
 	_g2=value;
 }
 
+// set the pin assignments for each segment
+// of digit 2 (aka digit 0)
 void SevenSegmentSL1255::set_a2(uint8_t value) {
 	_a2=value;
 }
@@ -7797,6 +7973,7 @@ void SevenSegmentSL1255::set_g2(uint8_t value) {
 	_g2=value;
 }
 
+// set misc class parameters
 void SevenSegmentSL1255::set_onValue(uint8_t value) {
 	_onValue=value;
 }

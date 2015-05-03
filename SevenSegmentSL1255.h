@@ -73,7 +73,8 @@ Please report any!
 #define default_f2 14
 #define default_g2 15
 
-// Pin out: Display2 Segment Pin#
+// Pin out: Display0 Segment Pin#
+// Just a pseudonym for Display2
 #define default_a0 default_a2
 #define default_b0 default_b2
 #define default_c0 default_c2
@@ -110,8 +111,9 @@ class SevenSegmentSL1255
       void begin(void);
 
       // Direct Draw methods
+      // Using 'Xx' notation
       // *** Most Significant Digit ***
-      // Hex chars (2nd digit)
+      // Hex chars (1st digit)
       void draw_0x(void);
       void draw_1x(void);
       void draw_2x(void);
@@ -135,7 +137,7 @@ class SevenSegmentSL1255
       void draw_Fx(void);
       void draw_fx(void);
 
-      // Extra Letters
+      // Extra Letters (1st digit)
       void draw_Gx(void);
       void draw_gx(void);
       void draw_Hx(void);
@@ -177,10 +179,298 @@ class SevenSegmentSL1255
       void draw_Zx(void);
       void draw_zx(void);
 
-      // Symbols
+      // Symbols (1st digit)
       void draw_degreex(void);
 
-      // Bitmap
+      // Direct Draw methods
+      // Using 'Xx' notation
+      // *** Least Significant Digit ***
+      // Hex chars (2nd digit)
+      void draw_x0(void);
+      void draw_x1(void);
+      void draw_x2(void);
+      void draw_x3(void);
+      void draw_x4(void);
+      void draw_x5(void);
+      void draw_x6(void);
+      void draw_x7(void);
+      void draw_x8(void);
+      void draw_x9(void);
+      void draw_xA(void);
+      void draw_xa(void);
+      void draw_xB(void);
+      void draw_xb(void);
+      void draw_xC(void);
+      void draw_xc(void);
+      void draw_xD(void);
+      void draw_xd(void);
+      void draw_xE(void);
+      void draw_xe(void);
+      void draw_xF(void);
+      void draw_xf(void);
+
+      // Extra Letters (2nd digit)
+      void draw_xG(void);
+      void draw_xg(void);
+      void draw_xH(void);
+      void draw_xh(void);
+      void draw_xI(void);
+      void draw_xi(void);
+      void draw_xJ(void);
+      void draw_xj(void);
+      void draw_xK(void);
+      void draw_xk(void);
+      void draw_xL(void);
+      void draw_xl(void);
+      void draw_xM(void);
+      void draw_xm(void);
+      void draw_xN(void);
+      void draw_xn(void);
+      void draw_xO(void);
+      void draw_xo(void);
+      void draw_xP(void);
+      void draw_xp(void);
+      void draw_xQ(void);
+      void draw_xq(void);
+      void draw_xR(void);
+      void draw_xr(void);
+      void draw_xS(void);
+      void draw_xs(void);
+      void draw_xT(void);
+      void draw_xt(void);
+      void draw_xU(void);
+      void draw_xu(void);
+      void draw_xV(void);
+      void draw_xv(void);
+      void draw_xW(void);
+      void draw_xw(void);
+      void draw_xX(void);
+//      void draw_xx(void); // conflict - MSD or LSD?
+      void draw_xY(void);
+      void draw_xy(void);
+      void draw_xZ(void);
+      void draw_xz(void);
+
+      // Symbols (2nd digit)
+      void draw_xdegree(void);
+
+      // Direct Draw methods
+	  // Using 'Number placement' notation, using digit number in method name
+      // *** Most Significant Digit ***
+      // Hex chars (1st digit)
+      void draw_0_1(void);
+      void draw_1_1(void);
+      void draw_2_1(void);
+      void draw_3_1(void);
+      void draw_4_1(void);
+      void draw_5_1(void);
+      void draw_6_1(void);
+      void draw_7_1(void);
+      void draw_8_1(void);
+      void draw_9_1(void);
+      void draw_A_1(void);
+      void draw_a_1(void);
+      void draw_B_1(void);
+      void draw_b_1(void);
+      void draw_C_1(void);
+      void draw_c_1(void);
+      void draw_D_1(void);
+      void draw_d_1(void);
+      void draw_E_1(void);
+      void draw_e_1(void);
+      void draw_F_1(void);
+      void draw_f_1(void);
+
+      // Extra Letters (1st digit)
+      void draw_G_1(void);
+      void draw_g_1(void);
+      void draw_H_1(void);
+      void draw_h_1(void);
+      void draw_I_1(void);
+      void draw_i_1(void);
+      void draw_J_1(void);
+      void draw_j_1(void);
+      void draw_K_1(void);
+      void draw_k_1(void);
+      void draw_L_1(void);
+      void draw_l_1(void);
+      void draw_M_1(void);
+      void draw_m_1(void);
+      void draw_N_1(void);
+      void draw_n_1(void);
+      void draw_O_1(void);
+      void draw_o_1(void);
+      void draw_P_1(void);
+      void draw_p_1(void);
+      void draw_Q_1(void);
+      void draw_q_1(void);
+      void draw_R_1(void);
+      void draw_r_1(void);
+      void draw_S_1(void);
+      void draw_s_1(void);
+      void draw_T_1(void);
+      void draw_t_1(void);
+      void draw_U_1(void);
+      void draw_u_1(void);
+      void draw_V_1(void);
+      void draw_v_1(void);
+      void draw_W_1(void);
+      void draw_w_1(void);
+      void draw_X_1(void);
+      void draw_x_1(void);
+      void draw_Y_1(void);
+      void draw_y_1(void);
+      void draw_Z_1(void);
+      void draw_z_1(void);
+
+      // Symbols (1st digit)
+      void draw_degree_1(void);
+
+      // Direct Draw methods
+	  // Using 'Number placement' notation, using digit number in method name
+      // *** Least Significant Digit ***
+      // Hex chars (2nd digit)
+      void draw_0_0(void);
+      void draw_1_0(void);
+      void draw_2_0(void);
+      void draw_3_0(void);
+      void draw_4_0(void);
+      void draw_5_0(void);
+      void draw_6_0(void);
+      void draw_7_0(void);
+      void draw_8_0(void);
+      void draw_9_0(void);
+      void draw_A_0(void);
+      void draw_a_0(void);
+      void draw_B_0(void);
+      void draw_b_0(void);
+      void draw_C_0(void);
+      void draw_c_0(void);
+      void draw_D_0(void);
+      void draw_d_0(void);
+      void draw_E_0(void);
+      void draw_e_0(void);
+      void draw_F_0(void);
+      void draw_f_0(void);
+
+      // Extra Letters (2nd digit)
+      void draw_G_0(void);
+      void draw_g_0(void);
+      void draw_H_0(void);
+      void draw_h_0(void);
+      void draw_I_0(void);
+      void draw_i_0(void);
+      void draw_J_0(void);
+      void draw_j_0(void);
+      void draw_K_0(void);
+      void draw_k_0(void);
+      void draw_L_0(void);
+      void draw_l_0(void);
+      void draw_M_0(void);
+      void draw_m_0(void);
+      void draw_N_0(void);
+      void draw_n_0(void);
+      void draw_O_0(void);
+      void draw_o_0(void);
+      void draw_P_0(void);
+      void draw_p_0(void);
+      void draw_Q_0(void);
+      void draw_q_0(void);
+      void draw_R_0(void);
+      void draw_r_0(void);
+      void draw_S_0(void);
+      void draw_s_0(void);
+      void draw_T_0(void);
+      void draw_t_0(void);
+      void draw_U_0(void);
+      void draw_u_0(void);
+      void draw_V_0(void);
+      void draw_v_0(void);
+      void draw_W_0(void);
+      void draw_w_0(void);
+      void draw_X_0(void);
+      void draw_x_0(void);
+      void draw_Y_0(void);
+      void draw_y_0(void);
+      void draw_Z_0(void);
+      void draw_z_0(void);
+
+      // Symbols (2nd digit)
+      void draw_degree_0(void);
+
+      // Direct Draw methods
+	  // Using 'Number placement' notation, using digit number in method name
+      // *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
+      // Hex chars (2nd digit)
+      void draw_0_2(void);
+      void draw_1_2(void);
+      void draw_2_2(void);
+      void draw_3_2(void);
+      void draw_4_2(void);
+      void draw_5_2(void);
+      void draw_6_2(void);
+      void draw_7_2(void);
+      void draw_8_2(void);
+      void draw_9_2(void);
+      void draw_A_2(void);
+      void draw_a_2(void);
+      void draw_B_2(void);
+      void draw_b_2(void);
+      void draw_C_2(void);
+      void draw_c_2(void);
+      void draw_D_2(void);
+      void draw_d_2(void);
+      void draw_E_2(void);
+      void draw_e_2(void);
+      void draw_F_2(void);
+      void draw_f_2(void);
+
+      // Extra Letters (2nd digit)
+      void draw_G_2(void);
+      void draw_g_2(void);
+      void draw_H_2(void);
+      void draw_h_2(void);
+      void draw_I_2(void);
+      void draw_i_2(void);
+      void draw_J_2(void);
+      void draw_j_2(void);
+      void draw_K_2(void);
+      void draw_k_2(void);
+      void draw_L_2(void);
+      void draw_l_2(void);
+      void draw_M_2(void);
+      void draw_m_2(void);
+      void draw_N_2(void);
+      void draw_n_2(void);
+      void draw_O_2(void);
+      void draw_o_2(void);
+      void draw_P_2(void);
+      void draw_p_2(void);
+      void draw_Q_2(void);
+      void draw_q_2(void);
+      void draw_R_2(void);
+      void draw_r_2(void);
+      void draw_S_2(void);
+      void draw_s_2(void);
+      void draw_T_2(void);
+      void draw_t_2(void);
+      void draw_U_2(void);
+      void draw_u_2(void);
+      void draw_V_2(void);
+      void draw_v_2(void);
+      void draw_W_2(void);
+      void draw_w_2(void);
+      void draw_X_2(void);
+      void draw_x_2(void);
+      void draw_Y_2(void);
+      void draw_y_2(void);
+      void draw_Z_2(void);
+      void draw_z_2(void);
+
+      // Symbols (2nd digit)
+      void draw_degree_2(void);
+
+      // Bitmap Methods
       // uint8_t segmentMapCode is the bitwise byte of the segments to light (g1f1e1d1c1b1a1)
       void draw_bitmap2(uint8_t segmentMapCode);
       void draw_bitmapInvert2(uint8_t segmentMapCode);
@@ -197,11 +487,11 @@ class SevenSegmentSL1255
       void draw1(uint8_t segmentMapCode); //just calls draw_bitmap1()
       void drawInvert1(uint8_t segmentMapCode); //just calls draw_bitmapInvert1()
 
-      // Put
+      // Put Methods
 //      void putc(char character);
 //      void putchar(char character);
 
-      // Write
+      // Write Methods
       // char character is the ascii code of the character to draw
       void digit2CharWrite(char character);
       // uint8_t value is the octal numerical value to draw (0-7)
@@ -244,8 +534,11 @@ class SevenSegmentSL1255
       void write(uint8_t value); // have overload led?, prints two digits, calls write1 and write0, which each do only one digit (LSD, MSD?) <99
       void write(char characters[]);// two char array, string 2 characters
 
-	  //Scroll Routines
-	  //Default scroll() is to scroll left
+      void write(uint8_t value, uint8_t digit); // write to specific digit, calls digit1Write(uint8_t value) or digit0Write(uint8_t value) as appropriate
+      void write(char character, uint8_t digit);// write to specific digit, calls digit1Write(char character) or digit0Write(char character) as appropriate
+
+	  // Scroll Methods
+	  // Default scroll() is to scroll left
       void scroll(char characters[]);// two char array, string 2 characters
       void scroll(char characters[], int delay);// two char array, string 2 characters
       void scroll(char characters[], int delay, int directionLeft);// two char array, string 2 characters
@@ -256,12 +549,10 @@ class SevenSegmentSL1255
       void scrollRight(char characters[]);// two char array, string 2 characters
       void scrollRight(char characters[], int delay);// two char array, string 2 characters
 
-      void write(uint8_t value, uint8_t digit); // write to specific digit, calls digit1Write(uint8_t value) or digit0Write(uint8_t value) as appropriate
-      void write(char character, uint8_t digit);// write to specific digit, calls digit1Write(char character) or digit0Write(char character) as appropriate
 
-
+      // Effects Methods
       // *** Most Significant Digit ***
-      // Effects
+	  // Effects (1st digit)
       void effect_1(uint8_t index); //effect catalogue
       void effect_1(uint8_t index, int totaldelay); //effect catalogue
       void blankx(void);
@@ -297,79 +588,9 @@ class SevenSegmentSL1255
       void rotateCircleClockInvert_1(int totaldelay);
       void rotateCircleAnticlockInvert_1(int totaldelay);
 
-
+      // Effects Methods
       // *** Least Significant Digit ***
-      // Direct Draw methods
-      // Hex chars (1st digit)
-      void draw_x0(void);
-      void draw_x1(void);
-      void draw_x2(void);
-      void draw_x3(void);
-      void draw_x4(void);
-      void draw_x5(void);
-      void draw_x6(void);
-      void draw_x7(void);
-      void draw_x8(void);
-      void draw_x9(void);
-      void draw_xA(void);
-      void draw_xa(void);
-      void draw_xB(void);
-      void draw_xb(void);
-      void draw_xC(void);
-      void draw_xc(void);
-      void draw_xD(void);
-      void draw_xd(void);
-      void draw_xE(void);
-      void draw_xe(void);
-      void draw_xF(void);
-      void draw_xf(void);
-
-      // Extra Letters
-      void draw_xG(void);
-      void draw_xg(void);
-      void draw_xH(void);
-      void draw_xh(void);
-      void draw_xI(void);
-      void draw_xi(void);
-      void draw_xJ(void);
-      void draw_xj(void);
-      void draw_xK(void);
-      void draw_xk(void);
-      void draw_xL(void);
-      void draw_xl(void);
-      void draw_xM(void);
-      void draw_xm(void);
-      void draw_xN(void);
-      void draw_xn(void);
-      void draw_xO(void);
-      void draw_xo(void);
-      void draw_xP(void);
-      void draw_xp(void);
-      void draw_xQ(void);
-      void draw_xq(void);
-      void draw_xR(void);
-      void draw_xr(void);
-      void draw_xS(void);
-      void draw_xs(void);
-      void draw_xT(void);
-      void draw_xt(void);
-      void draw_xU(void);
-      void draw_xu(void);
-      void draw_xV(void);
-      void draw_xv(void);
-      void draw_xW(void);
-      void draw_xw(void);
-      void draw_xX(void);
-//      void draw_xx(void); // conflict - MSD or LSD?
-      void draw_xY(void);
-      void draw_xy(void);
-      void draw_xZ(void);
-      void draw_xz(void);
-
-      // Symbols
-      void draw_xdegree(void);
-
-      // Effects
+	  // Effects (2nd digit)
       void effect_0(uint8_t index); //effect catalogue
       void effect_0(uint8_t index, int totaldelay); //effect catalogue
       void blank_0(void);
@@ -402,8 +623,10 @@ class SevenSegmentSL1255
       void rotateCircleClockInvert_0(int totaldelay);
       void rotateCircleAnticlockInvert_0(int totaldelay);
 
-	  // Using SL-1255 Notion of LSD Digit 0 is Digit 2
-	  // Effects (1st digit) (Least Significant)
+      // Effects Methods
+      // *** Least Significant Digit ***
+	  // Using SL-1255 Notion of LSD (Digit 0) is Digit 2
+	  // Effects (2nd digit)
       void effect_2(uint8_t index); //effect catalogue
       void effect_2(uint8_t index, int totaldelay); //effect catalogue
       void xblank(void);
@@ -439,226 +662,11 @@ class SevenSegmentSL1255
       void rotateCircleClockInvert_2(int totaldelay);
       void rotateCircleAnticlockInvert_2(int totaldelay);
 
-
-
-      // *** Most Significant Digit ***
-	  // Number placement
-      // Direct Draw methods using digit number in method name
-      // Hex chars (2nd digit)
-      void draw_0_1(void);
-      void draw_1_1(void);
-      void draw_2_1(void);
-      void draw_3_1(void);
-      void draw_4_1(void);
-      void draw_5_1(void);
-      void draw_6_1(void);
-      void draw_7_1(void);
-      void draw_8_1(void);
-      void draw_9_1(void);
-      void draw_A_1(void);
-      void draw_a_1(void);
-      void draw_B_1(void);
-      void draw_b_1(void);
-      void draw_C_1(void);
-      void draw_c_1(void);
-      void draw_D_1(void);
-      void draw_d_1(void);
-      void draw_E_1(void);
-      void draw_e_1(void);
-      void draw_F_1(void);
-      void draw_f_1(void);
-
-      // Extra Letters
-      void draw_G_1(void);
-      void draw_g_1(void);
-      void draw_H_1(void);
-      void draw_h_1(void);
-      void draw_I_1(void);
-      void draw_i_1(void);
-      void draw_J_1(void);
-      void draw_j_1(void);
-      void draw_K_1(void);
-      void draw_k_1(void);
-      void draw_L_1(void);
-      void draw_l_1(void);
-      void draw_M_1(void);
-      void draw_m_1(void);
-      void draw_N_1(void);
-      void draw_n_1(void);
-      void draw_O_1(void);
-      void draw_o_1(void);
-      void draw_P_1(void);
-      void draw_p_1(void);
-      void draw_Q_1(void);
-      void draw_q_1(void);
-      void draw_R_1(void);
-      void draw_r_1(void);
-      void draw_S_1(void);
-      void draw_s_1(void);
-      void draw_T_1(void);
-      void draw_t_1(void);
-      void draw_U_1(void);
-      void draw_u_1(void);
-      void draw_V_1(void);
-      void draw_v_1(void);
-      void draw_W_1(void);
-      void draw_w_1(void);
-      void draw_X_1(void);
-      void draw_x_1(void);
-      void draw_Y_1(void);
-      void draw_y_1(void);
-      void draw_Z_1(void);
-      void draw_z_1(void);
-
-      // Symbols
-      void draw_degree_1(void);
-
-      // *** Least Significant Digit ***
-	  // Number placement
-      // Direct Draw methods using digit number in method name
-      // Hex chars (1st digit)
-      void draw_0_0(void);
-      void draw_1_0(void);
-      void draw_2_0(void);
-      void draw_3_0(void);
-      void draw_4_0(void);
-      void draw_5_0(void);
-      void draw_6_0(void);
-      void draw_7_0(void);
-      void draw_8_0(void);
-      void draw_9_0(void);
-      void draw_A_0(void);
-      void draw_a_0(void);
-      void draw_B_0(void);
-      void draw_b_0(void);
-      void draw_C_0(void);
-      void draw_c_0(void);
-      void draw_D_0(void);
-      void draw_d_0(void);
-      void draw_E_0(void);
-      void draw_e_0(void);
-      void draw_F_0(void);
-      void draw_f_0(void);
-
-      // Extra Letters
-      void draw_G_0(void);
-      void draw_g_0(void);
-      void draw_H_0(void);
-      void draw_h_0(void);
-      void draw_I_0(void);
-      void draw_i_0(void);
-      void draw_J_0(void);
-      void draw_j_0(void);
-      void draw_K_0(void);
-      void draw_k_0(void);
-      void draw_L_0(void);
-      void draw_l_0(void);
-      void draw_M_0(void);
-      void draw_m_0(void);
-      void draw_N_0(void);
-      void draw_n_0(void);
-      void draw_O_0(void);
-      void draw_o_0(void);
-      void draw_P_0(void);
-      void draw_p_0(void);
-      void draw_Q_0(void);
-      void draw_q_0(void);
-      void draw_R_0(void);
-      void draw_r_0(void);
-      void draw_S_0(void);
-      void draw_s_0(void);
-      void draw_T_0(void);
-      void draw_t_0(void);
-      void draw_U_0(void);
-      void draw_u_0(void);
-      void draw_V_0(void);
-      void draw_v_0(void);
-      void draw_W_0(void);
-      void draw_w_0(void);
-      void draw_X_0(void);
-      void draw_x_0(void); //conflict with old name
-      void draw_Y_0(void);
-      void draw_y_0(void);
-      void draw_Z_0(void);
-      void draw_z_0(void);
-
-      // Symbols
-      void draw_degree_0(void);
-
-      // *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
-	  // Number placement
-      // Direct Draw methods using digit number in method name
-      // Hex chars (1st digit)
-      void draw_0_2(void);
-      void draw_1_2(void);
-      void draw_2_2(void);
-      void draw_3_2(void);
-      void draw_4_2(void);
-      void draw_5_2(void);
-      void draw_6_2(void);
-      void draw_7_2(void);
-      void draw_8_2(void);
-      void draw_9_2(void);
-      void draw_A_2(void);
-      void draw_a_2(void);
-      void draw_B_2(void);
-      void draw_b_2(void);
-      void draw_C_2(void);
-      void draw_c_2(void);
-      void draw_D_2(void);
-      void draw_d_2(void);
-      void draw_E_2(void);
-      void draw_e_2(void);
-      void draw_F_2(void);
-      void draw_f_2(void);
-
-      // Extra Letters
-      void draw_G_2(void);
-      void draw_g_2(void);
-      void draw_H_2(void);
-      void draw_h_2(void);
-      void draw_I_2(void);
-      void draw_i_2(void);
-      void draw_J_2(void);
-      void draw_j_2(void);
-      void draw_K_2(void);
-      void draw_k_2(void);
-      void draw_L_2(void);
-      void draw_l_2(void);
-      void draw_M_2(void);
-      void draw_m_2(void);
-      void draw_N_2(void);
-      void draw_n_2(void);
-      void draw_O_2(void);
-      void draw_o_2(void);
-      void draw_P_2(void);
-      void draw_p_2(void);
-      void draw_Q_2(void);
-      void draw_q_2(void);
-      void draw_R_2(void);
-      void draw_r_2(void);
-      void draw_S_2(void);
-      void draw_s_2(void);
-      void draw_T_2(void);
-      void draw_t_2(void);
-      void draw_U_2(void);
-      void draw_u_2(void);
-      void draw_V_2(void);
-      void draw_v_2(void);
-      void draw_W_2(void);
-      void draw_w_2(void);
-      void draw_X_2(void);
-      void draw_x_2(void);
-      void draw_Y_2(void);
-      void draw_y_2(void);
-      void draw_Z_2(void);
-      void draw_z_2(void);
-
-      // Symbols
-      void draw_degree_2(void);
-
-// Simultaneous Effects on digits 1 and 2
-      // Effects
+      // Effects Methods
+      // *** Most and Least Significant Digit ***
+	  // Using SL-1255 Notion of MSD is Digit 1 and LSD (Digit 0) is Digit 2
+	  // Effects (1st and 2nd digits)
+      // Simultaneous Effects on digits 1 and 2 (1 + 2 = 3)
       void effect_3(uint8_t index); //effect catalogue
       void effect_3(uint8_t index, int totaldelay); //effect catalogue
       void xblankx(void);
@@ -694,10 +702,22 @@ class SevenSegmentSL1255
       void rotateCircleClockInvert_3(int totaldelay);
       void rotateCircleAnticlockInvert_3(int totaldelay);
 
-      //Get State
+      // Get/Set Pin State Methods
 	  uint8_t getPinState(uint8_t pin); // pass pin number 2, 3, 4, ..., 16
-      uint8_t getPinFromSegment(char segment[]);
-	  uint8_t getSegmentState(char segment[]); // pass segment name a1...g1, a2...g2
+	  void setPinState(uint8_t pin, uint8_t value);				// pass pin number 2, 3, 4, ..., 16
+
+      // Get Pin Number from Segment Name Method
+      uint8_t getPinFromSegment(char segment[/*static 2*/]);
+                                       // static 2 (for C99) force two characters array (should be 3?)
+
+      // Get/Set Segment State Methods
+	  uint8_t getSegmentState(char segment[/*static 2*/]); // pass segment name a1...g1, a2...g2
+                                       // static 2 (for C99) force two characters array (should be 3?)
+	  void setSegmentState(char segment[/*static 2*/], uint8_t value); // pass segment name a1...g1, a2...g2
+                                       // static 2 (for C99) force two characters array (should be 3?)
+
+      // Get State Methods
+
       // get the state for each segment
       // of digit 1
       uint8_t getState_a1(void);
@@ -707,8 +727,9 @@ class SevenSegmentSL1255
       uint8_t getState_e1(void);
       uint8_t getState_f1(void);
       uint8_t getState_g1(void);
+
       // get the state for each segment
-      // of digit 2 (aka digit 0)
+      // of digit 0 (aka digit 2)
       uint8_t getState_a0(void);
       uint8_t getState_b0(void);
       uint8_t getState_c0(void);
@@ -716,6 +737,7 @@ class SevenSegmentSL1255
       uint8_t getState_e0(void);
       uint8_t getState_f0(void);
       uint8_t getState_g0(void);
+
       // get the state for each segment
       // of digit 2 (aka digit 0)
       uint8_t getState_a2(void);
@@ -726,10 +748,8 @@ class SevenSegmentSL1255
       uint8_t getState_f2(void);
       uint8_t getState_g2(void);
 
-      //Set State
-	  void setPinState(uint8_t pin, uint8_t value);				// pass pin number 2, 3, 4, ..., 16
-// static 2 (for C99) force two characters array (should be 3?)
-	  void setSegmentState(char segment[/*static 2*/], uint8_t value); // pass segment name a1...g1, a2...g2
+      // Set State Methods
+
       // set the state for each segment
       // of digit 1
       void setState_a1(uint8_t value);
@@ -739,17 +759,19 @@ class SevenSegmentSL1255
       void setState_e1(uint8_t value);
       void setState_f1(uint8_t value);
       void setState_g1(uint8_t value);
+
       // set the state for each segment
-      // of digit 2 (aka digit 0)
+      // of digit 0 (aka digit 2)
       void setState_a0(uint8_t value);
       void setState_b0(uint8_t value);
       void setState_c0(uint8_t value);
       void setState_d0(uint8_t value);
       void setState_e0(uint8_t value);
       void setState_f0(uint8_t value);
+      void setState_g0(uint8_t value);
+
       // set the state for each segment
       // of digit 2 (aka digit 0)
-      void setState_g0(uint8_t value);
       void setState_a2(uint8_t value);
       void setState_b2(uint8_t value);
       void setState_c2(uint8_t value);
@@ -759,8 +781,9 @@ class SevenSegmentSL1255
       void setState_g2(uint8_t value);
 
 
-      //Accessors
-      //getters
+      // Accessors
+      // getters methods
+
       // get the pin assignments for each segment
       // of digit 1
       uint8_t get_a1(void);
@@ -770,8 +793,9 @@ class SevenSegmentSL1255
       uint8_t get_e1(void);
       uint8_t get_f1(void);
       uint8_t get_g1(void);
+
       // get the pin assignments for each segment
-      // of digit 2 (aka digit 0)
+      // of digit 0 (aka digit 2)
       uint8_t get_a0(void);
       uint8_t get_b0(void);
       uint8_t get_c0(void);
@@ -779,6 +803,7 @@ class SevenSegmentSL1255
       uint8_t get_e0(void);
       uint8_t get_f0(void);
       uint8_t get_g0(void);
+
       // get the pin assignments for each segment
       // of digit 2 (aka digit 0)
       uint8_t get_a2(void);
@@ -789,12 +814,15 @@ class SevenSegmentSL1255
       uint8_t get_f2(void);
       uint8_t get_g2(void);
 
+      // get misc class parameters
       uint8_t get_onValue(void);
       uint8_t get_offValue(void);
       uint8_t get_ssType(void);
 
 
-      //setters
+      // Accessors
+      // setters methods
+
       // set the pin assignments for each segment
       // of digit 1
       void set_a1(uint8_t value);
@@ -804,8 +832,9 @@ class SevenSegmentSL1255
       void set_e1(uint8_t value);
       void set_f1(uint8_t value);
       void set_g1(uint8_t value);
+
       // set the pin assignments for each segment
-      // of digit 2 (aka digit 0)
+      // of digit 0 (aka digit 2)
       void set_a0(uint8_t value);
       void set_b0(uint8_t value);
       void set_c0(uint8_t value);
@@ -813,6 +842,7 @@ class SevenSegmentSL1255
       void set_e0(uint8_t value);
       void set_f0(uint8_t value);
       void set_g0(uint8_t value);
+
       // set the pin assignments for each segment
       // of digit 2 (aka digit 0)
       void set_a2(uint8_t value);
@@ -823,12 +853,15 @@ class SevenSegmentSL1255
       void set_f2(uint8_t value);
       void set_g2(uint8_t value);
 
+      // set misc class parameters
       void set_onValue(uint8_t value);
       void set_offValue(uint8_t value);
       void set_ssType(uint8_t value);
 
 
     private:
+      // Initialiser Methods
+      // Called by constructors
       void init(void);
       void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
       void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);
@@ -845,7 +878,7 @@ class SevenSegmentSL1255
       uint8_t _f1;
       uint8_t _g1;
 
-	  // Digit 2
+	  // Digit 0
 //      uint8_t _a0;
 //      uint8_t _b0;
 //      uint8_t _c0;
@@ -854,6 +887,7 @@ class SevenSegmentSL1255
 //      uint8_t _f0;
 //      uint8_t _g0;
 
+	  // Digit 2
       uint8_t _a2;
       uint8_t _b2;
       uint8_t _c2;
@@ -862,15 +896,21 @@ class SevenSegmentSL1255
       uint8_t _f2;
       uint8_t _g2;
 
+      // The logical values for on and off
       uint8_t _onValue;
       uint8_t _offValue;
 
       uint8_t _ssType; // seven segment type, 0 (SL-1255) or 1 (SL-1256)
 
-      static const uint8_t _asciiTable[128]; // = {s0, s1, s2, s3, s4, s5, s6, s7, s8, s9};
-      static const uint8_t _hexTable[16];   // = {s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, sA, sb, sC, sd, sE, sF}; //for hexWrite()
-      static const uint8_t _decTable[10];   // = {s0, s1, s2, s3, s4, s5, s6, s7, s8, s9}; //for decWrite()
-      static const uint8_t _octTable[8];    // = {s0, s1, s2, s3, s4, s5, s6, s7}; //for octWrite()
+      // Tables containing the character segment maps (bitmaps)
+      // The ASCII character set
+      static const uint8_t _asciiTable[128];
+      // The Hexadecimal character set (0-F)
+      static const uint8_t _hexTable[16];    //for hexWrite()
+      // The Decimal character set (0-9)
+      static const uint8_t _decTable[10];    //for decWrite()
+      // The Octal character set (0-7)
+      static const uint8_t _octTable[8];    //for octWrite()
 
 };
 
