@@ -291,6 +291,7 @@ void SevenSegmentSL1255::begin(void) {
   pinMode(_g2, OUTPUT);
 }
 
+
 // Direct draw Methods
 // *** Most Significant Digit ***
 // Hex chars (1st digit)
@@ -299,312 +300,112 @@ void SevenSegmentSL1255::begin(void) {
 //Draw character '0' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_0x(void) {
   draw_0_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/
 }
 
 //Draw character '1' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_1x(void) {
   draw_1_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/
 }
 
 //Draw character '2' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_2x(void) {
   draw_2_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character '3' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_3x(void) {
   draw_3_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character '4' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_4x(void) {
   draw_4_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character '5' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_5x(void) {
   draw_5_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character '6' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_6x(void) {
   draw_6_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character '7' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_7x(void) {
   draw_7_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character '8' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_8x(void) {
   draw_8_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character '9' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_9x(void) {
   draw_9_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'A' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Ax(void) {
   draw_A_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'a' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_ax(void) {
   draw_a_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'B' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Bx(void) {
   draw_B_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'b' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_bx(void) {
   draw_b_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'C' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Cx(void) {
   draw_C_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'c' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_cx(void) {
   draw_c_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'D' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Dx(void) {
   draw_D_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'd' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_dx(void) {
   draw_d_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'E' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Ex(void) {
   draw_E_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'e' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_ex(void) {
   draw_e_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'F' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Fx(void) {
   draw_F_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'f' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_fx(void) {
   draw_f_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 // Extra Letters (1st digit)
 
@@ -613,562 +414,202 @@ void SevenSegmentSL1255::draw_fx(void) {
 //Draw character 'G' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Gx(void) {
   draw_G_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'g' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_gx(void) {
   draw_g_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'H' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Hx(void) {
   draw_H_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'h' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_hx(void) {
   draw_h_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'I' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Ix(void) {
   draw_I_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'i' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_ix(void) {
   draw_i_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'J' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Jx(void) {
   draw_J_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'j' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_jx(void) {
   draw_j_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'K' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Kx(void) {
   draw_K_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'k' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_kx(void) {
   draw_k_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'L' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Lx(void) {
   draw_L_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'l' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_lx(void) {
   draw_l_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'M' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Mx(void) {
   draw_M_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'm' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_mx(void) {
   draw_m_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'N' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Nx(void) {
   draw_N_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'n' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_nx(void) {
   draw_n_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'O' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Ox(void) {
   draw_O_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'o' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_ox(void) {
   draw_o_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'P' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Px(void) {
   draw_P_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'p' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_px(void) {
   draw_p_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'Q' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Qx(void) {
   draw_Q_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'q' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_qx(void) {
   draw_q_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'R' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Rx(void) {
   draw_R_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'r' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_rx(void) {
   draw_r_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'S' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Sx(void) {
   draw_S_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 's' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_sx(void) {
   draw_s_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'T' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Tx(void) {
   draw_T_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 't' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_tx(void) {
   draw_t_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'U' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Ux(void) {
   draw_U_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'u' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_ux(void) {
   draw_u_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'V' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Vx(void) {
   draw_V_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'v' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_vx(void) {
   draw_v_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'W' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Wx(void) {
   draw_W_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'w' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_wx(void) {
   draw_w_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_offValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_offValue);
-*/}
+}
 
 //Draw character 'X' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Xx(void) {
   draw_X_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'x' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_xx(void) {
   draw_x_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'Y' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Yx(void) {
   draw_Y_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_offValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'Y' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_yx(void) {
   draw_y_1();
-
-/*
-  digitalWrite(_a1,_offValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_onValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_offValue);
-  digitalWrite(_f1,_onValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'Z' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_Zx(void) {
   draw_Z_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 //Draw character 'z' to left hand (MSD) digit
 void SevenSegmentSL1255::draw_zx(void) {
   draw_z_1();
-
-/*
-  digitalWrite(_a1,_onValue);
-  digitalWrite(_b1,_onValue);
-  digitalWrite(_c1,_offValue);
-  digitalWrite(_d1,_onValue);
-  digitalWrite(_e1,_onValue);
-  digitalWrite(_f1,_offValue);
-  digitalWrite(_g1,_onValue);
-*/}
+}
 
 // Symbols (1st digit)
 //Draw degree character to left hand (MSD) digit
@@ -1181,747 +622,233 @@ void SevenSegmentSL1255::draw_degreex(void) {
 
 void SevenSegmentSL1255::draw_x0(void) {
   draw_0_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/
 }
 
 void SevenSegmentSL1255::draw_x1(void) {
   draw_1_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x2(void) {
   draw_2_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x3(void) {
   draw_3_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x4(void) {
   draw_4_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x5(void) {
   draw_5_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x6(void) {
   draw_6_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x7(void) {
   draw_7_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x8(void) {
   draw_8_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x9(void) {
   draw_9_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xA(void) {
   draw_A_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xa(void) {
   draw_a_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xB(void) {
   draw_B_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xb(void) {
   draw_b_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xC(void) {
   draw_C_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xc(void) {
   draw_c_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xD(void) {
   draw_D_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xd(void) {
   draw_d_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xE(void) {
   draw_E_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xe(void) {
   draw_e_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xF(void) {
   draw_F_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xf(void) {
   draw_f_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 // Extra Letters (2nd digit)
 
 void SevenSegmentSL1255::draw_xG(void) {
   draw_G_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xg(void) {
   draw_g_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xH(void) {
   draw_H_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xh(void) {
   draw_h_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xI(void) {
   draw_I_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xi(void) {
   draw_i_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xJ(void) {
   draw_J_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xj(void) {
   draw_j_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xK(void) {
   draw_K_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xk(void) {
   draw_k_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xL(void) {
   draw_L_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xl(void) {
   draw_l_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xM(void) {
   draw_M_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xm(void) {
   draw_m_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xN(void) {
   draw_N_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xn(void) {
   draw_n_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xO(void) {
   draw_O_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xo(void) {
   draw_o_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xP(void) {
   draw_P_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xp(void) {
   draw_p_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xQ(void) {
   draw_Q_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xq(void) {
   draw_q_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xR(void) {
   draw_R_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xr(void) {
   draw_r_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xS(void) {
   draw_S_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xs(void) {
   draw_s_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xT(void) {
   draw_T_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xt(void) {
   draw_t_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xU(void) {
   draw_U_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xu(void) {
   draw_u_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xV(void) {
   draw_V_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xv(void) {
   draw_v_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xW(void) {
   draw_W_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xw(void) {
   draw_w_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xX(void) {
   draw_X_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 //void SevenSegmentSL1255::draw_xx(void) {
 //  digitalWrite(_a2,_offValue);
@@ -1935,55 +862,19 @@ void SevenSegmentSL1255::draw_xX(void) {
 
 void SevenSegmentSL1255::draw_xY(void) {
   draw_Y_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xy(void) {
   draw_y_2();
-
-/*
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xZ(void) {
   draw_Z_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_xz(void) {
   draw_z_2();
-
-/*
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 // Symbols (2nd digit)
 void SevenSegmentSL1255::draw_xdegree(void) {
@@ -2638,762 +1529,258 @@ void SevenSegmentSL1255::draw_degree_1(void) {
 
 void SevenSegmentSL1255::draw_0_0(void) {
   draw_0_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_1_0(void) {
   draw_1_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_2_0(void) {
   draw_2_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_3_0(void) {
   draw_3_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_4_0(void) {
   draw_4_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_5_0(void) {
   draw_5_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_6_0(void) {
   draw_6_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_7_0(void) {
   draw_7_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_8_0(void) {
   draw_8_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_9_0(void) {
   draw_9_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_A_0(void) {
   draw_A_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_a_0(void) {
   draw_a_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_B_0(void) {
   draw_B_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_b_0(void) {
   draw_b_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_C_0(void) {
   draw_C_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_c_0(void) {
   draw_c_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_D_0(void) {
   draw_D_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_d_0(void) {
   draw_d_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_E_0(void) {
   draw_E_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_e_0(void) {
   draw_e_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_F_0(void) {
   draw_F_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_f_0(void) {
   draw_f_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 // Extra Letters (2nd digit)
 
 void SevenSegmentSL1255::draw_G_0(void) {
   draw_G_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_g_0(void) {
   draw_g_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_H_0(void) {
   draw_H_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_h_0(void) {
   draw_h_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_I_0(void) {
   draw_I_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_i_0(void) {
   draw_i_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_J_0(void) {
   draw_J_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_j_0(void) {
   draw_j_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_K_0(void) {
   draw_K_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_k_0(void) {
   draw_k_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_L_0(void) {
   draw_L_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_l_0(void) {
   draw_l_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_M_0(void) {
   draw_M_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_m_0(void) {
   draw_m_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_N_0(void) {
   draw_N_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_n_0(void) {
   draw_n_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_O_0(void) {
   draw_O_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_o_0(void) {
   draw_o_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_P_0(void) {
   draw_P_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_p_0(void) {
   draw_p_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_Q_0(void) {
   draw_Q_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_q_0(void) {
   draw_q_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_R_0(void) {
   draw_R_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_r_0(void) {
   draw_r_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_S_0(void) {
   draw_S_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_s_0(void) {
   draw_s_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_T_0(void) {
   draw_T_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_t_0(void) {
   draw_t_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_U_0(void) {
   draw_U_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_u_0(void) {
   draw_u_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_V_0(void) {
   draw_V_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_v_0(void) {
   draw_v_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_W_0(void) {
   draw_W_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_w_0(void) {
   draw_w_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_X_0(void) {
   draw_X_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_x_0(void) {
   draw_x_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_Y_0(void) {
   draw_Y_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_y_0(void) {
   draw_y_2();
-
-/*  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_Z_0(void) {
   draw_Z_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 void SevenSegmentSL1255::draw_z_0(void) {
   draw_z_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 // Symbols (2nd digit)
 void SevenSegmentSL1255::draw_degree_0(void) {
   draw_degree_2();
-
-/*  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
-*/}
+}
 
 
 // Number placement
