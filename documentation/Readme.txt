@@ -19,11 +19,11 @@ One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, a
 Synopsis
 ========
 
-When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays.
+When the class is instantiated using the defaults then it will work with the Sanyo SL-1255 (red) and SL-2255 (green) dual seven segment displays, which are common anode devices. The private member, _onValue, is LOW for the segments of these displays (and conversely the private member, _offValue, is HIGH).
 
-This library will also work with SL-1256 and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
+This library will also work with SL-1256 (red) and SL-2256 (green) common cathode devices, just specify the ssType (seven segment type) parameter in the constructor using the predefined SL-1256 or SL-2256 macros. The private member, _onValue, is HIGH for the segments of these displays. Alternatively, it is possible to specify the onValue and offValue, instead of using the ssType parameter, using the appropriate constructor. Please see the constructor examples below.
 
-The public methods supplied include (direct) draw, effects, as well as, the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). The standard C++ getters and setters for accessing class members are also provided.  The various method types are briefly discussed below. The methods are often overridden to provide versatility and to suit various writing styles. This may appear confusing initially, although a simple subset of the methods is all that is required in order to get the library up and running with your display (constructor, begin and write).
+The public methods supplied include (direct) draw, effects and accessors, as well as, the usual Arduino, begin() and write(), methods for ints and char arrays ([1] and [2]). The standard C++ getters and setters for accessing class members are also provided.  The various method types are briefly discussed below. The methods are often overridden to provide versatility and to suit various writing styles. This may appear confusing initially, although a simple subset of the methods is all that is required in order to get the library up and running with your display (constructor, begin and write).
 
 Library Contents
 ================
@@ -96,6 +96,7 @@ The term 'segment maps' is used interchangeably with the term 'bitmaps', when re
 
 Command Reference
 =================
+
 The file CommandReference.txt is a simplified form of the header file, SevenSegment1255.h, and expands upon the method descriptions below.
 
 Constructor Methods
@@ -131,7 +132,7 @@ Sets up the most significant digit (MSD) and the least significant digit (LSD) w
 Draw Methods
 ============
 
-These direct draw methods are derived from the first attempts at writing test code to get the SL-1255 working with the Arduino. They are left in place for completeness, and someone may find them useful. However, they have been largely superseded by the Write methods, although the drawBitmap() methods [read as drawSevenSegmentMaps()] are still useful and form the man body of the drawing routines. Most of the direct draw methods are deprecated in the Lite version of this library, SevenSeg1255Lite. The direct draw methods use the non-standard (Arduino) naming convention of draw_Xx, where the position of the 'X' denotes which segment is NOT being written to and the position of the 'x' denotes which segment is NOT being written to. So, draw_Ax() displays an 'A' character on digit 1 (the Most Significant Digit), and draw_xh() displays an 'h' character on digit 0 (the Least Significant Digit).  
+These direct draw methods are derived from the first attempts at writing test code to get the SL-1255 working with the Arduino. They are left in place for completeness, and someone may find them useful. However, they have been largely superseded by the Write methods, although the drawBitmap() methods [read as drawSevenSegmentMaps()] are still useful and form the man body of the drawing routines. Most of the direct draw methods are deprecated in the Lite version of this library, SevenSeg1255Lite. The direct draw methods use the non-standard (Arduino) naming convention of draw_Xx, where the position of the 'X' denotes which segment is being written to and the position of the 'x' denotes which segment is NOT being written to. So, draw_Ax() displays an 'A' character on digit 1 (the Most Significant Digit), and draw_xh() displays an 'h' character on digit 0 (the Least Significant Digit).  
 
 This differs from the drawBitmap and Write methods (see 'Draw Bitmap Methods' and 'Write Methods' below) that use a more conventional '0' and '1', in the method name, to denote the least significant and most significant digit of the display.
 
@@ -147,12 +148,17 @@ This method defines the assigned pins of the Arduino as OUTPUTs, and should be c
 Draw Bitmap Methods
 ===================
 
-These methods enable the user to pass a numeric (octal, decimal or hexadecimal) value or alphanumeric (or ASCII) character to the method to display on either or both of the display's digits.
+These methods enable the user to pass a seven segment code that represents an alphanumeric (or ASCII) character to the method to display on either of the display's digits.
 
 Write Methods
 =============
 
 These methods enable the user to pass a numeric (octal, decimal or hexadecimal) value or alphanumeric (or ASCII) character to the method to display on either or both of the display's digits.
+
+Scroll Methods
+==============
+
+These methods enable the user to pass an alphanumeric (or ASCII) character string to the method to scroll (left or right) across both of the display's digits.
 
 Effects Methods
 ===============
@@ -174,7 +180,7 @@ Note: This delay is not the total delay, i.e. the total duration of the effect, 
 Get and Set States
 ==================
 
-These methods provide access to the states of the segments and pins, and the pins assigned to the segments.
+These methods, getSegmentState(), getPinState(), setSegmentState() and setPinState(), provide access to the states of the segments and pins, and setPinFromSegment() returns the pins assigned to the segments.
 
 Getters and Setters
 ===================
