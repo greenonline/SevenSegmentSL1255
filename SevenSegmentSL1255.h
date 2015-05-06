@@ -564,6 +564,11 @@ class SevenSegmentSL1255
 
 
       // Effects Methods
+      // Any Digit
+      void effect(uint8_t index, uint8_t digit); //effect catalogue
+      void effect(uint8_t index, int totaldelay, uint8_t digit); //effect catalogue
+
+      // Effects Methods
 
       // *** Most Significant Digit ***
 	  // Effects (1st digit)

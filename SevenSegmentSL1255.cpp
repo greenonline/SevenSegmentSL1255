@@ -2883,6 +2883,47 @@ void SevenSegmentSL1255::scrollRight(char characters[], int delayBetweenScroll) 
 }
 
 // Effects Methods
+// Any Digit, default delay
+void SevenSegmentSL1255::effect(uint8_t index, uint8_t digit){ //effect catalogue
+	switch (digit) {
+		case 0 :
+			effect_2(index);
+			break;
+		case 1 :
+			effect_1(index);
+			break;
+		case 2 :
+			effect_2(index);
+			break;
+		case 3 :
+			effect_3(index);
+			break;
+		default :
+			break;
+	}
+}
+
+// Any Digit, specified delay
+void SevenSegmentSL1255::effect(uint8_t index, int totaldelay, uint8_t digit){ //effect catalogue
+	switch (digit) {
+		case 0 :
+			effect_2(index, totaldelay);
+			break;
+		case 1 :
+			effect_1(index, totaldelay);
+			break;
+		case 2 :
+			effect_2(index, totaldelay);
+			break;
+		case 3 :
+			effect_3(index, totaldelay);
+			break;
+		default :
+			break;
+	}
+}
+
+// Effects Methods
 
 // *** Most Significant Digit ***
 // Effects (1st digit)
