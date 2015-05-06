@@ -61,6 +61,7 @@ Library Contents
     examples/SevenSegMapsLoop/SevenSegMapsLoop.ino
     documentation/Readme.txt
     documentation/QuickStart.txt
+    documentation/MethodReference.txt
     documentation/7-seg display sl-1255-30 DSA-305501.pdf
     documentation/photos/breadboard01.jpg
     documentation/photos/breadboard02.jpg
@@ -108,10 +109,10 @@ The MSD is also referred to as the 1st digit and the LSD as the 2nd digit (which
 
 The term 'segment maps' is used interchangeably with the term 'bitmaps', when referring to the codes that define which segments are used to depict the character glyphs.
 
-Command Reference
-=================
+Method Reference
+================
 
-The file CommandReference.txt is a simplified form of the header file, SevenSegment1255.h, and expands upon the method descriptions below.
+The file MethodReference.txt is a simplified form of the header file, SevenSegment1255.h, and expands upon the method descriptions below.
 
 Constructor Methods
 ===================
