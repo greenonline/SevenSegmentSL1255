@@ -552,15 +552,18 @@ class SevenSegmentSL1255
 	  // Scroll Methods
 
 	  // Default scroll() is to scroll left
-      void scroll(char characters[]);// two char array, string 2 characters
-      void scroll(char characters[], int delay);// two char array, string 2 characters
-      void scroll(char characters[], int delay, int directionLeft);// two char array, string 2 characters
+	  // null terminated array
+	  void scroll(char characters[]);
+	  // null terminated array, custom delay
+	  void scroll(char characters[], int delay);
+      // null terminated array, custom delay, specified direction
+      void scroll(char characters[], int delay, uint8_t directionLeft);
 
-      void scrollLeft(char characters[]);// two char array, string 2 characters
-      void scrollLeft(char characters[], int delay);// two char array, string 2 characters
+      void scrollLeft(char characters[]);				// null terminated array
+      void scrollLeft(char characters[], int delay);	// null terminated array, custom delay
 
-      void scrollRight(char characters[]);// two char array, string 2 characters
-      void scrollRight(char characters[], int delay);// two char array, string 2 characters
+      void scrollRight(char characters[]);				// null terminated array
+      void scrollRight(char characters[], int delay);	// null terminated array, custom delay
 
 
       // Effects Methods

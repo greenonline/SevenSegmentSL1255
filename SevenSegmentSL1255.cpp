@@ -2757,7 +2757,7 @@ void SevenSegmentSL1255::scroll(char characters[], int delayBetweenScroll) {
 //scroll and specify delay and direction in parameter
 // Scroll left  == 1
 // Scroll right != 1
-void SevenSegmentSL1255::scroll(char characters[], int delayBetweenScroll, int directionLeft) {
+void SevenSegmentSL1255::scroll(char characters[], int delayBetweenScroll, uint8_t directionLeft) {
 	if (directionLeft == 1){
 		scrollLeft(characters, delayBetweenScroll);
 	} else {
