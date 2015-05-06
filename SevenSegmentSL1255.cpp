@@ -3578,630 +3578,125 @@ void SevenSegmentSL1255::rotateCircleAnticlockInvert_1(int totaldelay){
 // Effects (2nd digit)
 
 void SevenSegmentSL1255::effect_0(uint8_t index) {
-	int defaultDelay = default_delay;
-	effect_0(index, defaultDelay);
+	effect_2(index);
 }
 
 void SevenSegmentSL1255::effect_0(uint8_t index, int totaldelay) {
-	switch (index) {
-		case 0 :
-			blank_0();
-			break;
-		case 1 :
-			flash_0(totaldelay);
-			break;
-		case 2 :
-			rotateOnSegment_0(totaldelay);
-			break;
-		case 3 :
-			rotateOffSegment_0(totaldelay);
-			break;
-		case 4 :
-			sequentiallyTurnOnAllSegments_0(totaldelay);
-			break;
-		case 5 :
-			sequentiallyTurnOffAllSegments_0(totaldelay);
-			break;
-		case 6 :
-			figure8Clock_0(totaldelay);
-			break;
-		case 7 :
-			figure8Anticlock_0(totaldelay);
-			break;
-		case 8 :
-			figure8ClockInvert_0(totaldelay);
-			break;
-		case 9 :
-			figure8AnticlockInvert_0(totaldelay);
-			break;
-		case 10 :
-			rotateTopClock_0(totaldelay);
-			break;
-		case 11 :
-			rotateTopAnticlock_0(totaldelay);
-			break;
-		case 12 :
-			rotateTopClockInvert_0(totaldelay);
-			break;
-		case 13 :
-			rotateTopAnticlockInvert_0(totaldelay);
-			break;
-		case 14 :
-			rotateBottomClock_0(totaldelay);
-			break;
-		case 15 :
-			rotateBottomAnticlock_0(totaldelay);
-			break;
-		case 16 :
-			rotateBottomClockInvert_0(totaldelay);
-			break;
-		case 17 :
-			rotateBottomAnticlockInvert_0(totaldelay);
-			break;
-		case 18 :
-			rotateBothClock_0(totaldelay);
-			break;
-		case 19 :
-			rotateBothAnticlock_0(totaldelay);
-			break;
-		case 20 :
-			rotateBothClockInvert_0(totaldelay);
-			break;
-		case 21 :
-			rotateBothAnticlockInvert_0(totaldelay);
-			break;
-		case 22 :
-			rotateCircleClock_0(totaldelay);
-			break;
-		case 23 :
-			rotateCircleAnticlock_0(totaldelay);
-			break;
-		case 24 :
-			rotateCircleClockInvert_0(totaldelay);
-			break;
-		case 25 :
-			rotateCircleAnticlockInvert_0(totaldelay);
-			break;
-		default :
-			break;
-	}
+  effect_2(index, totaldelay);
 }
 
 void SevenSegmentSL1255::blank_0(void) {
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_offValue);
+  blank_2();
 }
 
 void SevenSegmentSL1255::fill_0(void) {
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_onValue);
+  fill_2();
 }
 
 void SevenSegmentSL1255::flash_0(int totaldelay) {
-  blank_0();
-  delay (totaldelay/2);
-  fill_0();
-  delay (totaldelay/2);
+  flash_2(totaldelay);
 }
 
 // This only works if the pins are sequential
 void SevenSegmentSL1255::rotateOffSegment_0(int totaldelay){
-  fill_0();
-  for(uint8_t pin=_a2; pin<=_g2; pin++) {
-    digitalWrite(pin,_offValue);
-    delay(totaldelay/2);
-    digitalWrite(pin,_onValue);
-    delay(totaldelay/2);
-  }
+  rotateOffSegment_2(totaldelay);
 }
 
 // This only works if the pins are sequential
 void SevenSegmentSL1255::rotateOnSegment_0(int totaldelay){
-  blank_0();
-  for(uint8_t pin=_a2; pin<=_g2; pin++) {
-    digitalWrite(pin,_onValue);
-    delay(totaldelay/2);
-    digitalWrite(pin,_offValue);
-    delay(totaldelay/2);
-  }
+  rotateOnSegment_2(totaldelay);
 }
 
 // This only works if the pins are sequential
 void SevenSegmentSL1255::sequentiallyTurnOnAllSegments_0(int totaldelay){
-  blank_0();
-  for(uint8_t pin=_a2; pin<=_g2; pin++) {
-    digitalWrite(pin,_onValue);
-    delay(totaldelay);
-  }
+  sequentiallyTurnOnAllSegments_2(totaldelay);
 }
 
 // This only works if the pins are sequential
 void SevenSegmentSL1255::sequentiallyTurnOffAllSegments_0(int totaldelay){
-  fill_0();
-  for(uint8_t pin=_a2; pin<=_g2; pin++) {
-    digitalWrite(pin,_offValue);
-    delay(totaldelay);
-  }
+  sequentiallyTurnOffAllSegments_2(totaldelay);
 }
 
 void SevenSegmentSL1255::figure8Clock_0(int totaldelay){
-  // a, b, g, e, d, c, g, f, a, ...
-  blank_0();
-  digitalWrite(_a2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_f2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  figure8Clock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::figure8Anticlock_0(int totaldelay){
-  // a, f, g, c, d, e, g, b, a, ...
-  blank_0();
-  digitalWrite(_f2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_b2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_a2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  figure8Anticlock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::figure8ClockInvert_0(int totaldelay){
-  // a, b, g, e, d, c, g, f, a, ...
-  fill_0();
-  digitalWrite(_a2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_f2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  figure8ClockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::figure8AnticlockInvert_0(int totaldelay){
-  // a, f, g, c, d, e, g, b, a, ...
-  fill_0();
-  digitalWrite(_f2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_b2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_a2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  figure8AnticlockInvert_2(totaldelay);
 }
 
 //Start Rotate First Digit
 
 void SevenSegmentSL1255::rotateTopClock_0(int totaldelay){
-  // a, b, g, f, a, ...
-  blank_0();
-  digitalWrite(_a2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_f2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateTopClock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateTopAnticlock_0(int totaldelay){
-  // a, f, g, b, a, ...
-  blank_0();
-  digitalWrite(_f2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_b2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_a2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateTopAnticlock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateTopClockInvert_0(int totaldelay){
-  // a, b, g, f, a, ...
-  fill_0();// draw top circle, not 8?
-  digitalWrite(_a2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_f2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateTopClockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateTopAnticlockInvert_0(int totaldelay){
-  // a, f, g, b, a, ...
-  fill_0();// draw top circle, not 8?
-  digitalWrite(_f2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_b2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_a2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateTopAnticlockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBottomClock_0(int totaldelay){
-  // g, c, d, e, g, ...
-  blank_0();
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_e2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBottomClock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBottomAnticlock_0(int totaldelay){
-  // g, e, d, c, g, ...
-  blank_0();
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_g2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBottomAnticlock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBottomClockInvert_0(int totaldelay){
-  // g, c, d, e, g, ...
-  fill_0();// draw bottom circle, not 8?
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_e2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBottomClockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBottomAnticlockInvert_0(int totaldelay){
-  // g, e, d, c, g, ...
-  fill_0();// draw bottom circle, not 8?
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_g2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBottomAnticlockInvert_0(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBothClock_0(int totaldelay){
-  // a, b, g, f, a, ...
-  // g, c, d, e, g, ...
-  blank_0();
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  digitalWrite(_e2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBothClock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBothAnticlock_0(int totaldelay){
-  // a, f, g, b, a, ...
-  // g, e, d, c, g, ...
-  blank_0();
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_g2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  digitalWrite(_g2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBothAnticlock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBothClockInvert_0(int totaldelay){
-  // a, b, g, f, a, ...
-  // g, c, d, e, g, ...
-  fill_0();// draw top circle, not 8?
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  digitalWrite(_e2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBothClockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateBothAnticlockInvert_0(int totaldelay){
-  // a, f, g, b, a, ...
-  // g, e, d, c, g, ...
-  fill_0();// draw top circle, not 8?
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_g2,_offValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_g2,_onValue);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_g2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  digitalWrite(_g2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateBothAnticlockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateCircleClock_0(int totaldelay){
-  // a, b, c, d, e, f, a, ...
-  blank_0();
-  digitalWrite(_a2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_offValue);
-  digitalWrite(_b2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_f2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateCircleClock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateCircleAnticlock_0(int totaldelay){
-  // a, f, e, d, c, b, a, ...
-  blank_0();
-  digitalWrite(_f2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_offValue);
-  digitalWrite(_e2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_offValue);
-  digitalWrite(_d2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_offValue);
-  digitalWrite(_c2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_offValue);
-  digitalWrite(_b2,_onValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_offValue);
-  digitalWrite(_a2,_onValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateCircleAnticlock_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateCircleClockInvert_0(int totaldelay){
-  // a, b, c, d, e, f, a, ...
-  fill_0();// draw circle (draw_0x), not 8?
-  digitalWrite(_a2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_a2,_onValue);
-  digitalWrite(_b2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_f2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_f2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateCircleClockInvert_2(totaldelay);
 }
 
 void SevenSegmentSL1255::rotateCircleAnticlockInvert_0(int totaldelay){
-  // a, f, e, d, c, b, a, ...
-  fill_0();// draw circle (draw_0x), not 8?
-  digitalWrite(_f2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_f2,_onValue);
-  digitalWrite(_e2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_e2,_onValue);
-  digitalWrite(_d2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_d2,_onValue);
-  digitalWrite(_c2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_c2,_onValue);
-  digitalWrite(_b2,_offValue);
-  delay(totaldelay);
-  digitalWrite(_b2,_onValue);
-  digitalWrite(_a2,_offValue);
-  delay(totaldelay);
-//  digitalWrite(_a2,_offValue); //each new effect should kill the "trailing" lit LED
-//  delay(totaldelay);			 //of the previous effect
+  rotateCircleAnticlockInvert_2(totaldelay);
 }
 
 
