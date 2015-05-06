@@ -908,15 +908,6 @@ class SevenSegmentSL1255
       uint8_t _f1;
       uint8_t _g1;
 
-	  // Digit 0
-//      uint8_t _a0;
-//      uint8_t _b0;
-//      uint8_t _c0;
-//      uint8_t _d0;
-//      uint8_t _e0;
-//      uint8_t _f0;
-//      uint8_t _g0;
-
 	  // Digit 2
       uint8_t _a2;
       uint8_t _b2;
