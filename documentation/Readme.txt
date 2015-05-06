@@ -16,6 +16,20 @@ Introduction
 
 One day, in March 2015, whilst shopping for Arduino bits and pieces in Ban Mo, an electronics street market in BKK, I came across a large sheet of polystyrene bejewelled in Sanyo SL-1255-30 two digit seven segment displays, for 5 Baht each, which was displayed in the street outside a shop. I purchased one of the seven segment displays, took it home, and eventually realised that no libraries existed for the common anode device.  So I promptly set about writing my own sketch, which then evolved into an Arduino Library that was developed over the course of a couple of weeks. This is that library.
 
+I subsequently discovered that there was already an excellent library called SevenSeg, by Sigvald Marholm, 12.07.2013. However, that only works for displays with common segment pins, i.e. all like segments (A1, A2, A3 and A4) are tied together, whereas the SL-1255 has separate pins for each segment. Granted you can use the SL-1255 with the SevenSeg Library, by just tying the segment pins together (for example, A1 to A2), but I decided to take a different approach and, maybe wastefully, use each pin, and tie each display's segment pin to a different Arduino pin. Admittedly, most of the Arduino's pins are used, using this approach, and more pins are used on multi-digit displays, than if the SevenSeg library is used: 
+
+1 digit uses 7 pins (as opposed to 8 (or 7) when using SevenSeg);
+2 digits uses 14 pins (as opposed to 9 when using SevenSeg)).
+
+However, if you don't mind dedicating an entire Arduino to controlling the LED display, then this library is for you.  Also, using this method, the LEDs are constantly on, as there is no refreshing required, nor is there is a duty cycle. This means that the LEDs are always at full brightness and no interrupts need to be employed (which would be the case if it was required that the display be refreshed in a timely manner) should the loop() method becomes lengthly.
+
+Furthermore, there is yet another library at the Arduino playground called SevSeg v.2.0. So while, SevSeg was the first, and the original, library for seven segment displays, the newer libraries  provide extra features - SevenSeg offers more flexibility and SevenSegment1255 provides for a dedicated seven segment display driving Arduino environment.
+
+Disclaimer
+==========
+
+No responsibility is taken for the usage of this code (or additional material such as this document). Most of the code has been tested. However, some parts may not be working, and some information herein may not be correct. Updates and backward/-forward compatibility are not guaranteed. Use it at your own risk. This library is provided free of charge for non-commercial purposes.
+
 Synopsis
 ========
 
