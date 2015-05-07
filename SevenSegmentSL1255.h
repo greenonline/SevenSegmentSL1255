@@ -55,7 +55,7 @@ Please report any!
 #include "Arduino.h"
 #include "SevenSegmentMaps.h"
 
-// Pin out: Display1 Segment Pin#
+// Pin out: Digit 1 Segment Pin#
 #define default_a1 2
 #define default_b1 3
 #define default_c1 4
@@ -64,7 +64,7 @@ Please report any!
 #define default_f1 7
 #define default_g1 8
 
-// Pin out: Display2 Segment Pin#
+// Pin out: Digit 2 Segment Pin#
 #define default_a2 9
 #define default_b2 10
 #define default_c2 11
@@ -474,17 +474,17 @@ class SevenSegmentSL1255
       // uint8_t segmentMapCode is the bitwise byte of the segments to light (g1f1e1d1c1b1a1)
       void draw_bitmap1(uint8_t segmentMapCode);
       void draw_bitmapInvert1(uint8_t segmentMapCode);
-      void draw1(uint8_t segmentMapCode); //just calls draw_bitmap1()
+      void draw1(uint8_t segmentMapCode); 		//just calls draw_bitmap1()
       void drawInvert1(uint8_t segmentMapCode); //just calls draw_bitmapInvert1()
 
       void draw_bitmap0(uint8_t segmentMapCode);
       void draw_bitmapInvert0(uint8_t segmentMapCode);
-      void draw0(uint8_t segmentMapCode); //just calls draw_bitmap0()
+      void draw0(uint8_t segmentMapCode); 		//just calls draw_bitmap0()
       void drawInvert0(uint8_t segmentMapCode); //just calls draw_bitmapInvert0()
 
       void draw_bitmap2(uint8_t segmentMapCode);
       void draw_bitmapInvert2(uint8_t segmentMapCode);
-      void draw2(uint8_t segmentMapCode); //just calls draw_bitmap2()
+      void draw2(uint8_t segmentMapCode); 		//just calls draw_bitmap2()
       void drawInvert2(uint8_t segmentMapCode); //just calls draw_bitmapInvert2()
 
       // Put Methods
