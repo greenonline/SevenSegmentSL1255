@@ -73,16 +73,6 @@ Please report any!
 #define default_f2 14
 #define default_g2 15
 
-// Pin out: Display0 Segment Pin#
-// Just a pseudonym for Display2
-#define default_a0 default_a2
-#define default_b0 default_b2
-#define default_c0 default_c2
-#define default_d0 default_d2
-#define default_e0 default_e2
-#define default_f0 default_f2
-#define default_g0 default_g2
-
 // 7 segment type, common anode, or cathode
 // The value of the model basically denotes the ON value for an LED,
 // so as SL-1255 has a ON for LOW (0), common anode , then SL-1255 is 0
