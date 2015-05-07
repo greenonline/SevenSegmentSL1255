@@ -155,8 +155,8 @@ Note: In order to follow the notation of the Sanyo SL-1255 data sheet '2' is als
 
 Note: For completeness, and consistency, "direct draw" methods, that employ the digit number in the method name to refer to the digit being written to, have also been included. SO, draw_C_0(), draw_g_1() and draw_j_2() will write to the LSD, MSD and LSD respectively.
 
-Begin Methods
-=============
+Begin Method
+============
 
 This method defines the assigned pins of the Arduino as OUTPUTs, and should be called from the setup() function in the Arduino sketch.
 
@@ -210,7 +210,7 @@ Some examples have been include to familiarise the user with the various methods
 Conclusion
 ==========
 
-Please enjoy using this library. It may be a little heavyweight, as it is an "everything-but-the-kitchen-sink" type library, with many member methods overridden and duplicated with different function names, in order to accommodate new Arduino users, by adhering to Arduino naming standards and conventions, as well as some non standard functions, included for the convenience, and amusement, of advanced users.
+Please enjoy using this library. It may be a little heavy weight, as it is an "everything-but-the-kitchen-sink" type library, with many member methods overridden and duplicated with different function names, in order to accommodate new Arduino users, by adhering to Arduino naming standards and conventions, as well as some non standard functions, included for the convenience, and amusement, of advanced users.
 
 If you would prefer to employ a light weight version of this library that has been cut down, for memory economics, please consider using SevenSegSL1255Lite.
 

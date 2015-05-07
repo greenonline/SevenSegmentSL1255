@@ -6,7 +6,7 @@
 
        Version : 0.6.1
 
-In order to get you started, wire up your SL-1255 two digit seven segment display to your Nano, UNO, Mega board using the pin out described below (don't forget the 470 Ohm series resistors between each pin and segment (don't use just one common resistor on the common anode)), and then run the HelloWorld and SevenSegMaps99Loop example sketches, which are found in the examples directory (examples/HelloWorld/HelloWorld.ino and examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino respectively).
+In order to get you started, wire up your SL-1255 two digit seven segment display to your Nano, UNO, Mega board using the pin out described below (don't forget the 470 Ohm series resistors between each Arduino pin and segment (don't use just one common resistor on the common anode)), and then run the HelloWorld and SevenSegMaps99Loop example sketches, which are found in the examples directory (examples/HelloWorld/HelloWorld.ino and examples/SevenSegMaps99Loop/SevenSegMaps99Loop.ino respectively).
 
 
 Default Pinout
@@ -35,7 +35,7 @@ Vcc    -> ANODE 2 (5)
 The necessary methods
 =====================
 
-In order to crete a basic sketch, you will require calling two methods:
+In order to create a basic sketch, in addition to calling the constructor to instantiate the object, you will require calling two methods:
   - begin() - in setup() - to initialise the pin outputs of the Arduino
   - write(char[]) - in loop() - pass a '\0' terminated two character string, containing the ASCII characters that you wish to write
 
