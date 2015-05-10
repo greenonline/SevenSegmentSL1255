@@ -533,11 +533,11 @@ class SevenSegmentSL1255
       void digit2Write(char character);
       void write2(char character); //just calls digit2Write(char character)
 
-      void write(uint8_t value); // have overload led?, prints two digits, calls write1 and write0, which each do only one digit (LSD, MSD?) <99
+      void write(uint8_t value); // have overload led?, prints two digits, calls write1 and write2, which each do only one digit (MSD, LSD) <99
       void write(char characters[]);// two char array, string 2 characters
 
-      void write(uint8_t value, uint8_t digit); // write to specific digit, calls digit1Write(uint8_t value) or digit0Write(uint8_t value) as appropriate
-      void write(char character, uint8_t digit);// write to specific digit, calls digit1Write(char character) or digit0Write(char character) as appropriate
+      void write(uint8_t value, uint8_t digit); // write to specific digit, calls digit1Write(uint8_t value) or digit2Write(uint8_t value) as appropriate
+      void write(char character, uint8_t digit);// write to specific digit, calls digit1Write(char character) or digit2Write(char character) as appropriate
 
 	  // Scroll Methods
 
