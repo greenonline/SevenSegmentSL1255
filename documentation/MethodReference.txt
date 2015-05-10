@@ -1,0 +1,803 @@
+Method Reference
+=================
+
+Default Pinouts
+---------------
+
+These definitions are for the default pinouts of the Arduino to the SL-1255 display. They are used by the default constructor.
+
+// Pin out: Digit 1 Segment Pin#
+#define default_a1 2
+…
+#define default_g1 8
+
+The segments of digit 1 are connected to pins D2 to D8.
+
+// Pin out: Digit 2 Segment Pin#
+#define default_a2 9
+…
+#define default_g2 15
+
+The segments of digit 2 are connected to pins D9 to D15.
+
+Display Types
+-------------
+
+// 7 segment type, common anode, or cathode
+// The value of the model basically denotes the ON value for an LED,
+// so as SL-1255 has a ON for LOW (0), common anode , then SL-1255 is 0
+// so as SL-1256 has a ON for HIGH (1), common cathode , then SL-1256 is 1
+#define SL_1255 0
+#define SL_1256 1
+#define SL_2255 0
+#define SL_2256 1
+
+The user may use these pre-defined values, specified above (SL_1255, SL_1256, SL_2255 or SL_2256), in the overloaded constructor that uses the parameter ssType, see section 'Constructor Methods'.
+
+Logical On and Off states
+-------------------------
+
+// On is LOW for SL-1255
+// On is HIGH for SL-1256
+#define default_onValue LOW
+#define default_offValue HIGH
+
+These predefined values for the on state and off state of the segments are valid for anode anode displays (SL-1255 and SL-2255). Common cathode devices, these definitions are reversed. Note that the onValue is the same as the display type definition, SL-1255 is equal to 0, as is its respective onValue. This is not a coincidence, it is intentional, for the reasons of simplicity. The user may use these pre-defined values in the overloaded constructor that uses the parameters onValue and offVaue, see section 'Constructor Methods'.
+
+These defaults can be overridden, and inverted, using the appropriate constructor, if a common cathode display (SL-1256, SL-2256) is used, instead of the default common anode display (SL-1255).
+
+Also, if additional transistors are employed between the Arduino and the display, in order to increase the possible current supplied to the display, then the logical outputs may need to be inverted, as the use of transistors will invert the HIGH and LOW states for on and off. For example, the default state for a SL-1255 display for on is a LOW input. If a transistor is used, then the base of the transistor will need to be HIGH, in order for the collector to supply a LOW. So, the onValue will need to become HIGH, instead of the default LOW.
+ 
+
+Default Delay
+-------------
+
+#define default_delay 500
+
+The pre-defined default delay is 0.5 seconds.
+
+class SevenSegmentSL1255
+{
+    public:
+
+      // Constructor Methods
+
+These are the constructor methods and are used to instantiate the SevenSegment objects and initialise the pins (specify which Arduino pins are connected to which SL1255 pin). One default and four overloaded constructors are provided.
+
+      // Default Constructor
+      SevenSegmentSL1255();
+
+The default constructor is passed no parameters and set the Arduino pins to those defined as the defaults, that is D2-D15, see section 'Display Pinouts'.
+
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
+
+The second constructor is passed the pins for the second digit (LSD), whilst the default pins for the first digit are used (D2-D8).
+
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);
+
+The third constructor is passed the pins for both the first digit (MSD) and the second digit (LSD). The default pins are NOT used by this constructor
+
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType);
+
+This overloaded constructor allows the user to specify the seven segment type (using parameter ssType), to specify wether the device is common anode (ssType is equal to 0) or common cathode (ssType is equal to 1). The user may use the pre-defined values, specified above (SL_1255, SL_1256, SL_2255 or SL_2256), see section 'Display Types'.
+
+      SevenSegmentSL1255(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue);
+
+Another of the overloaded constructor allows the user to specify the logical values for On and off (using parameters onValue and ofValue), to specify which logic level will cause he LED segments to light. If the device is common anode (onValue is equal to 0) or common cathode (onValue is equal to 1). The value of offValue is obviously the complement of value of onValue. The user may use the pre-defined values, specified above (default_onValue or default_offValue), see section 'Logical On and Off states'.
+
+      void begin(void);
+
+The begin() method sets all of the pins which have been specified in the constructor as outputs.
+
+      // Direct Draw methods
+
+      // Using 'Xx' notation
+      // *** Most Significant Digit ***
+      // Hex chars (1st digit)
+      void draw_0x(void);
+      ...
+      void draw_fx(void);
+
+These methods draw a hexadecimal character (0-f) on to digit 1, the Most Significant Digit. The alpha characters (a-f) can be upper or lower case.
+
+      // Extra Letters (1st digit)
+      void draw_Gx(void);
+      ...
+      void draw_zx(void);
+
+These methods draw a character from the remaining letters of the alphabet (g-z) on to digit 1, the Most Significant Digit. These letters can be upper or lower case.
+
+
+      // Symbols (1st digit)
+      void draw_degreex(void);
+
+This method draws a degree character on to digit 1, the Most Significant Digit.
+
+      // Direct Draw methods
+
+      // Using 'Xx' notation
+      // *** Least Significant Digit ***
+      // Hex chars (2nd digit)
+      void draw_x0(void);
+      ...
+      void draw_xf(void);
+
+These methods draw a hexadecimal character (0-f) on to digit 2, the Least Significant Digit. The alpha characters (a-f) can be upper or lower case.
+
+      // Extra Letters (2nd digit)
+      void draw_xG(void);
+      ...
+      void draw_xz(void);
+
+These methods draw a character from the remaining letters of the alphabet (g-z) on to digit 2, the Least Significant Digit. These letters can be upper or lower case.
+
+      // Symbols (2nd digit)
+      void draw_xdegree(void);
+
+This method draws a degree character on to digit 2, the Least Significant Digit.
+
+      // Direct Draw methods
+
+      // Using 'Number placement' notation,  using digit number in method name
+      // *** Most Significant Digit ***
+      // Hex chars (1st digit)
+      void draw_0_1(void);
+      ...
+      void draw_f_1(void);
+
+These methods draw a hexadecimal character (0-f) on to digit 1, the Most Significant Digit. The alpha characters (a-f) can be upper or lower case.
+
+      // Extra Letters (1st digit)
+      void draw_G_1(void);
+      ...
+      void draw_z_1(void);
+
+These methods draw a character from the remaining letters of the alphabet (g-z) on to digit 1, the Most Significant Digit. These letters can be upper or lower case.
+
+      // Symbols (1st digit)
+      void draw_degree_1(void);
+
+This method draws a degree character on to digit 1, the Most Significant Digit.
+
+      // Direct Draw methods
+
+      // Using 'Number placement' notation,  using digit number in method name
+      // *** Least Significant Digit ***
+      // Hex chars (2nd digit)
+      void draw_0_0(void);
+      ...
+      void draw_f_0(void);
+
+These methods draw a hexadecimal character (0-f) on to digit 2, the Least Significant Digit. The alpha characters (a-f) can be upper or lower case.
+
+      // Extra Letters (2nd digit)
+      void draw_G_0(void);
+      ...
+      void draw_z_0(void);
+
+These methods draw a character from the remaining letters of the alphabet (g-z) on to digit 2, the Least Significant Digit. These letters can be upper or lower case.
+
+      // Symbols (2nd digit)
+      void draw_degree_0(void);
+
+This method draws a degree character on to digit 2, the Least Significant Digit.
+
+      // Direct Draw methods
+
+      // Using 'Number placement' notation,  using digit number in method name
+      // *** Least Significant Digit (using SL-1255 notion of LSD is digit 2) ***
+      // Hex chars (2nd digit)
+      void draw_0_2(void);
+      ...
+      void draw_f_2(void);
+
+These methods draw a hexadecimal character (0-f) on to digit 2, the Least Significant Digit. The alpha characters (a-f) can be upper or lower case.
+
+      // Extra Letters (2nd digit)
+      void draw_G_2(void);
+      ...
+      void draw_z_2(void);
+
+These methods draw a character from the remaining letters of the alphabet (g-z) on to digit 2, the Least Significant Digit. These letters can be upper or lower case.
+
+      // Symbols (2nd digit)
+      void draw_degree_2(void);
+
+This method draws a degree character on to digit 2, the Least Significant Digit.
+
+
+      // Bitmap Methods
+
+These methods display the character whose code is passed in the segmentMapCode parameter. See the file SevenSegmentMaps.h for a list of the characters and their respective map code. However, these are low level methods and there is no need to use them directly as they are called by the write methods, so the user should only need to use those and pass the character, or value, to be written to the write methods, without having to resort to looking up the segment map code and calling the draw_bitmap methods directly.
+
+The functions are duplicated with simpler names, such that draw1() simply calls draw_bitmap1(), the methods are identical.
+
+The segmentMapCode is simply a bitwise representation of which segments to light, and which to not, with the mapping of the seven segments to bits as gfedcba, with the most significant bit (MSB), 2^7, of the map byte ignored. So, for example, a byte of value 55 in decimal (0+32+16+0+4+2+1 = 55), in binary, 0110111, will display the character "A". Note that a 1 (or HIGH) value means that the segment is lit. It is independent from the logical on state. So for example a 1 in the segment map will translate to a logical LOW for a common anode display. This translation is done automatically.
+
+      // uint8_t segmentMapCode is the bitwise byte of the segments to light (g1f1e1d1c1b1a1)
+      void draw_bitmap1(uint8_t segmentMapCode);
+
+draw_bitmap1() displays the character represented by the segmentMapCode parameter on digit 1.
+
+      void draw_bitmapInvert1(uint8_t segmentMapCode);
+
+draw_bitmapInvert1() displays the inverted form of character represented by the segmentMapCode parameter on digit 1. The on and off states are reversed.
+
+      void draw1(uint8_t segmentMapCode); 	//just calls draw_bitmap1()
+
+This method simply calls draw_bitmap1(). It is provided for convenience.
+
+      void drawInvert1(uint8_t segmentMapCode); //just calls draw_bitmapInvert1()
+
+This method simply calls draw_bitmapInvert1(). It is provided for convenience.
+
+      void draw_bitmap0(uint8_t segmentMapCode);
+
+draw_bitmap0() displays the character represented by the segmentMapCode parameter on digit 2.
+
+      void draw_bitmapInvert0(uint8_t segmentMapCode);
+
+draw_bitmapInvert0() displays the inverted form of character represented by the segmentMapCode parameter on digit 2. The on and off states are reversed.
+
+      void draw0(uint8_t segmentMapCode); 	//just calls draw_bitmap0()
+
+This method simply calls draw_bitmap0(). It is provided for convenience.
+
+      void drawInvert0(uint8_t segmentMapCode); //just calls draw_bitmapInvert0()
+
+This method simply calls draw_bitmapInvert0(). It is provided for convenience.
+
+      void draw_bitmap2(uint8_t segmentMapCode);
+
+draw_bitmap2() displays the character represented by the segmentMapCode parameter on digit 2.
+
+      void draw_bitmapInvert2(uint8_t segmentMapCode);
+
+draw_bitmapInvert2() displays the inverted form of character represented by the segmentMapCode parameter on digit 2. The on and off states are reversed.
+
+      void draw2(uint8_t segmentMapCode); 	//just calls draw_bitmap2()
+
+This method simply calls draw_bitmap2(). It is provided for convenience.
+
+      void drawInvert2(uint8_t segmentMapCode); //just calls draw_bitmapInvert2()
+
+This method simply calls draw_bitmapInvert2(). It is provided for convenience.
+
+      // Put Methods
+
+These, as yet, unimplemented methods will provide printf compatibility.
+
+//      void putc(char character);
+//      void putchar(char character);
+
+      // Write Methods
+
+These methods display characters, or numeric values, passed in the parameters character ad value,respectively.
+
+      // char character is the ascii code of the character to draw
+      void digit1CharWrite(char character);
+
+digit1CharWrite() displays the ASCII character on digit 1.
+
+      // uint8_t value is the octal numerical value to draw (0-7)
+      void digit1OctWrite(uint8_t value);
+
+digit1OctWrite() displays the octal value on digit 1.
+
+      // uint8_t value is the decimal numerical value to draw (0-9)
+      void digit1DecWrite(uint8_t value);
+
+digit1DecWrite() displays the decimal value on digit 1.
+
+      // uint8_t value is the hexadecimal numerical value to draw (0-F)
+      void digit1HexWrite(uint8_t value);
+
+digit1HexWrite() displays the hexadecimal value on digit 1.
+
+      void digit1Write(uint8_t value);
+
+digit1Write(unit8_t) displays the decimal value on digit 1. It is equivalent to digit1DecWrite().
+
+      void write1(uint8_t value); //just calls digit1Write(uint8_t value)
+
+This method simply calls digit1Write(). It is provided for convenience.
+
+      void digit1Write(char character);
+
+digit1Write(char) displays the ASCII character on digit 1. It is equivalent to digit1CharWrite().
+
+      void write1(char character); //just calls digit1Write(char character)
+
+This method simply calls digit1Write(). It is provided for convenience.
+
+
+      // char character is the ascii code of the character to draw
+      void digit0CharWrite(char character);
+
+digit0CharWrite() displays the ASCII character on digit 2.
+
+      // uint8_t value is the octal numerical value to draw (0-7)
+      void digit0OctWrite(uint8_t value);
+
+digit0OctWrite() displays the octal value on digit 2.
+
+      // uint8_t value is the decimal numerical value to draw (0-9)
+      void digit0DecWrite(uint8_t value);
+
+digit0DecWrite() displays the decimal value on digit 2.
+
+      // uint8_t value is the hexadecimal numerical value to draw (0-F)
+      void digit0HexWrite(uint8_t value);
+
+digit0HexWrite() displays the hexadecimal value on digit 2.
+
+      void digit0Write(uint8_t value);
+
+digit0Write() displays the decimal value on digit 2. It is equivalent to digit0DecWrite().
+
+      void write0(uint8_t value); //just calls digit0Write(uint8_t value)
+
+This method simply calls digit0Write(). It is provided for convenience.
+
+      void digit0Write(char character);
+
+digit0Write(char) displays the ASCII character on digit 0. It is equivalent to digit0CharWrite().
+
+      void write0(char character); //just calls digit0Write(char character)
+
+This method simply calls digit0Write(). It is provided for convenience.
+
+
+      // char character is the ascii code of the character to draw
+      void digit2CharWrite(char character);
+
+digit2CharWrite() displays the ASCII character on digit 2.
+
+      // uint8_t value is the octal numerical value to draw (0-7)
+      void digit2OctWrite(uint8_t value);
+
+digit2OctWrite() displays the octal value on digit 2.
+
+      // uint8_t value is the decimal numerical value to draw (0-9)
+      void digit2DecWrite(uint8_t value);
+
+digit2DecWrite() displays the decimal value on digit 2.
+
+      // uint8_t value is the numerical value to draw (0-F)
+      void digit2HexWrite(uint8_t value);
+
+digit2HexWrite() displays the hexadecimal value on digit 2.
+
+      void digit2Write(uint8_t value);
+
+digit2Write() displays the decimal value on digit 2. It is equivalent to digit2DecWrite().
+
+      void write2(uint8_t value); //just calls digit2Write(uint8_t value)
+
+This method simply calls digit2Write(). It is provided for convenience.
+
+      void digit2Write(char character);
+
+digit2Write(char) displays the ASCII character on digit 2. It is equivalent to digit2CharWrite().
+
+      void write2(char character); //just calls digit2Write(char character)
+
+This method simply calls digit2Write(). It is provided for convenience.
+
+
+      void write(uint8_t value); // have overload led?, prints two digits, calls write1 and write2, which each do only one digit (MSD, LSD?) <99
+
+write(uint8_t) writes a two digit decimal number, whose value is less than 100, to the display, calling write1(int) for the MSD and write2(int) for the LSD. Values over 100 are discarded and not printed.
+
+      void write(char characters[]);// two char array, string 2 characters
+
+This method writes the first two characters, [0] and [1], of null terminated string (character array) to the display. Any other characters are discarded.
+
+      void write(uint8_t value, uint8_t digit); // write to specific digit, calls digit1Write(uint8_t value) or digit2Write(uint8_t value) as appropriate
+
+This method writes a value between 0 and 9 (inclusive) to the single digit specified in the parameter digit.
+
+      void write(char character, uint8_t digit);// write to specific digit, calls digit1Write(char character) or digit2Write(char character) as appropriate
+
+This method writes a single ASCII character to the single digit specified in the parameter digit.
+
+
+      //Scroll Methods
+
+      //Default scroll() is to scroll left
+      // null terminated array
+      void scroll(char characters[]);// two char array, string 2 characters
+
+This method scrolls a null terminated C string to the left, using the default delay between character shifts. The first character in the string is displayed first, on the LSD, with the remaining message scrolling across to the left. The last character in the string is last seen on the MSD.
+
+      // null terminated array, custom delay
+      void scroll(char characters[], int delay);// two char array, string 2 characters
+
+This method scrolls a null terminated C string to the left, using a specified delay between character shifts. The first character in the string is displayed first, on the LSD, with the remaining message scrolling across to the left. The last character in the string is last seen on the MSD.
+
+      // null terminated array, custom delay, specified direction
+      void scroll(char characters[], int delay, int directionLeft);// two char array, string 2 characters
+
+This method scrolls a null terminated C string to the left, using a specified delay between character shifts. The direction of the scroll is also specified, with TRUE/1 being left and any value not equal to one being right
+
+      void scrollLeft(char characters[]);		// null terminated array
+
+This method scrolls a null terminated C string to the left, using the default delay between character shifts. The first character in the string is displayed first, on the LSD, with the remaining message scrolling across to the left. The last character in the string is last seen on the MSD.
+
+      void scrollLeft(char characters[], int delay);	// null terminated array, custom delay
+
+This method scrolls a null terminated C string to the left, using a specified delay between character shifts. The first character in the string is displayed first, on the LSD, with the remaining message scrolling across to the left. The last character in the string is last seen on the MSD.
+
+      void scrollRight(char characters[]);		// null terminated array
+
+This method scrolls a null terminated C string to the right, using the default delay between character shifts. The last character in the string is displayed first, on the MSD, with the remaining message scrolling across to the right. The first character in the string is last seen on the LSD.
+
+      void scrollRight(char characters[], int delay);	// null terminated array, custom delay
+
+This method scrolls a null terminated C string to the right, using a specified delay between character shifts. The last character in the string is displayed first, on the MSD, with the remaining message scrolling across to the right. The first character in the string is last seen on the LSD.
+
+
+      // Effects Methods
+
+      // *** Most Significant Digit ***
+      // Effects (1st digit)
+      void effect(uint8_t index, uint8_t digit); //effect catalogue
+
+This method runs the effect specified by the index parameter, on a digit specified by the parameter digit. If '3' is used to specify the digit then the effect is run on both digits 1 and 2.
+
+      void effect(uint8_t index, int totaldelay, uint8_t digit); //effect catalogue
+
+This method runs the effect specified by the index parameter, on a digit specified by the parameter digit, using a delay specified by the totaldelay parameter. If '3' is used to specify the digit then the effect is run on both digits 1 and 2.
+
+      // Effects Methods
+
+      // *** Most Significant Digit ***
+      // Effects (1st digit)
+      void effect_1(uint8_t index); //effect catalogue
+
+This method runs the effect specified by the index parameter, on digit 1. The delay is defined by the defaultdelay definition (see above). 
+
+      void effect_1(uint8_t index, int totaldelay); //effect catalogue
+
+This method runs the effect specified by the index parameter, on digit 1, using a delay specified by the totaldelay parameter. 
+
+      void blankx(void);
+      void fillx(void);
+      void flashx(int totaldelay);
+      void blank_1(void);
+      void fill_1(void);
+      void flash_1(int totaldelay);
+      void rotateOnSegment_1(int totaldelay);
+      void rotateOffSegment_1(int totaldelay);
+      void sequentiallyTurnOnAllSegments_1(int totaldelay);
+      void sequentiallyTurnOffAllSegments_1(int totaldelay);
+      void figure8Clock_1(int totaldelay);
+      void figure8Anticlock_1(int totaldelay);
+      void figure8ClockInvert_1(int totaldelay);
+      void figure8AnticlockInvert_1(int totaldelay);
+      void rotateTopClock_1(int totaldelay);
+      void rotateTopAnticlock_1(int totaldelay);
+      void rotateTopClockInvert_1(int totaldelay);
+      void rotateTopAnticlockInvert_1(int totaldelay);
+      void rotateBottomClock_1(int totaldelay);
+      void rotateBottomAnticlock_1(int totaldelay);
+      void rotateBottomClockInvert_1(int totaldelay);
+      void rotateBottomAnticlockInvert_1(int totaldelay);
+      void rotateBothClock_1(int totaldelay);
+      void rotateBothAnticlock_1(int totaldelay);
+      void rotateBothClockInvert_1(int totaldelay);
+      void rotateBothAnticlockInvert_1(int totaldelay);
+//      void rotatebothaltclock_1(int totaldelay); //not required, call top and then bottom
+//      void rotatebothaltanticlock_1(int totaldelay);//not required, call top and then bottom
+      void rotateCircleClock_1(int totaldelay);
+      void rotateCircleAnticlock_1(int totaldelay);
+      void rotateCircleClockInvert_1(int totaldelay);
+      void rotateCircleAnticlockInvert_1(int totaldelay);
+
+
+      // Effects Methods
+
+      // *** Least Significant Digit ***
+      // Effects (2nd digit)
+      void effect_0(uint8_t index); //effect catalogue
+
+This method runs the effect specified by the index parameter, on digit 2. The delay is defined by the defaultdelay definition (see above).
+
+      void effect_0(uint8_t index, int totaldelay); //effect catalogue
+
+This method runs the effect specified by the index parameter, on digit 2, using a delay specified by the totaldelay parameter. 
+
+      void blank_0(void);
+      void fill_0(void);
+      void flash_0(int totaldelay);
+      void rotateOnSegment_0(int totaldelay);
+      void rotateOffSegment_0(int totaldelay);
+      void sequentiallyTurnOnAllSegments_0(int totaldelay);
+      void sequentiallyTurnOffAllSegments_0(int totaldelay);
+      void figure8Clock_0(int totaldelay);
+      void figure8Anticlock_0(int totaldelay);
+      void figure8ClockInvert_0(int totaldelay);
+      void figure8AnticlockInvert_0(int totaldelay);
+      void rotateTopClock_0(int totaldelay);
+      void rotateTopAnticlock_0(int totaldelay);
+      void rotateTopClockInvert_0(int totaldelay);
+      void rotateTopAnticlockInvert_0(int totaldelay);
+      void rotateBottomClock_0(int totaldelay);
+      void rotateBottomAnticlock_0(int totaldelay);
+      void rotateBottomClockInvert_0(int totaldelay);
+      void rotateBottomAnticlockInvert_0(int totaldelay);
+      void rotateBothClock_0(int totaldelay);
+      void rotateBothAnticlock_0(int totaldelay);
+      void rotateBothClockInvert_0(int totaldelay);
+      void rotateBothAnticlockInvert_0(int totaldelay);
+//      void rotatebothaltclock_0(int totaldelay); //not required, call top and then bottom
+//      void rotatebothaltanticlock_0(int totaldelay);//not required, call top and then bottom
+      void rotateCircleClock_0(int totaldelay);
+      void rotateCircleAnticlock_0(int totaldelay);
+      void rotateCircleClockInvert_0(int totaldelay);
+      void rotateCircleAnticlockInvert_0(int totaldelay);
+
+      // Effects Methods
+
+      // *** Least Significant Digit ***
+      // Using SL-1255 Notion of LSD (Digit 0) is Digit 2
+      // Effects (2nd digit)
+      void effect_2(uint8_t index); //effect catalogue
+
+This method runs the effect specified by the index parameter, on digit 2. The delay is defined by the defaultdelay definition (see above).
+
+      void effect_2(uint8_t index, int totaldelay); //effect catalogue
+
+This method runs the effect specified by the index parameter, on digit 2, using a delay specified by the totaldelay parameter. 
+
+      void xblank(void);
+      void xfill(void);
+      void xflash(int totaldelay);
+      void blank_2(void);
+      void fill_2(void);
+      void flash_2(int totaldelay);
+      void rotateOnSegment_2(int totaldelay);
+      void rotateOffSegment_2(int totaldelay);
+      void sequentiallyTurnOnAllSegments_2(int totaldelay);
+      void sequentiallyTurnOffAllSegments_2(int totaldelay);
+      void figure8Clock_2(int totaldelay);
+      void figure8Anticlock_2(int totaldelay);
+      void figure8ClockInvert_2(int totaldelay);
+      void figure8AnticlockInvert_2(int totaldelay);
+      void rotateTopClock_2(int totaldelay);
+      void rotateTopAnticlock_2(int totaldelay);
+      void rotateTopClockInvert_2(int totaldelay);
+      void rotateTopAnticlockInvert_2(int totaldelay);
+      void rotateBottomClock_2(int totaldelay);
+      void rotateBottomAnticlock_2(int totaldelay);
+      void rotateBottomClockInvert_2(int totaldelay);
+      void rotateBottomAnticlockInvert_2(int totaldelay);
+      void rotateBothClock_2(int totaldelay);
+      void rotateBothAnticlock_2(int totaldelay);
+      void rotateBothClockInvert_2(int totaldelay);
+      void rotateBothAnticlockInvert_2(int totaldelay);
+//      void rotatebothaltclock_2(int totaldelay); //not required, call top and then bottom
+//      void rotatebothaltanticlock_2(int totaldelay);//not required, call top and then bottom
+      void rotateCircleClock_2(int totaldelay);
+      void rotateCircleAnticlock_2(int totaldelay);
+      void rotateCircleClockInvert_2(int totaldelay);
+      void rotateCircleAnticlockInvert_2(int totaldelay);
+
+
+
+      // Effects Methods
+
+      // *** Most and Least Significant Digit ***
+      // Using SL-1255 Notion of MSD is Digit 1 and LSD (Digit 0) is Digit 2
+      // Effects (1st and 2nd digits)
+      // Simultaneous Effects on digits 1 and 2 (1 + 2 = 3)
+      void effect_3(uint8_t index); //effect catalogue
+
+This method runs the effect specified by the index parameter, on both digits 1 and 2. The delay is defined by the defaultdelay definition (see above). 
+
+      void effect_3(uint8_t index, int totaldelay); //effect catalogue
+
+This method runs the effect specified by the index parameter, on both digits 1 and 2, using a delay specified by the totaldelay parameter. 
+
+      void xblankx(void);
+      void xfillx(void);
+      void xflashx(int totaldelay);
+      void blank_3(void);
+      void fill_3(void);
+      void flash_3(int totaldelay);
+      void rotateOnSegment_3(int totaldelay);
+      void rotateOffSegment_3(int totaldelay);
+      void sequentiallyTurnOnAllSegments_3(int totaldelay);
+      void sequentiallyTurnOffAllSegments_3(int totaldelay);
+      void figure8Clock_3(int totaldelay);
+      void figure8Anticlock_3(int totaldelay);
+      void figure8ClockInvert_3(int totaldelay);
+      void figure8AnticlockInvert_3(int totaldelay);
+      void rotateTopClock_3(int totaldelay);
+      void rotateTopAnticlock_3(int totaldelay);
+      void rotateTopClockInvert_3(int totaldelay);
+      void rotateTopAnticlockInvert_3(int totaldelay);
+      void rotateBottomClock_3(int totaldelay);
+      void rotateBottomAnticlock_3(int totaldelay);
+      void rotateBottomClockInvert_3(int totaldelay);
+      void rotateBottomAnticlockInvert_3(int totaldelay);
+      void rotateBothClock_3(int totaldelay);
+      void rotateBothAnticlock_3(int totaldelay);
+      void rotateBothClockInvert_3(int totaldelay);
+      void rotateBothAnticlockInvert_3(int totaldelay);
+//      void rotatebothaltclock_3(int totaldelay); //not required, call top and then bottom
+//      void rotatebothaltanticlock_3(int totaldelay);//not required, call top and then bottom
+      void rotateCircleClock_3(int totaldelay);
+      void rotateCircleAnticlock_3(int totaldelay);
+      void rotateCircleClockInvert_3(int totaldelay);
+      void rotateCircleAnticlockInvert_3(int totaldelay);
+
+      //Get/Set Pin State Methods
+
+      uint8_t getPinState(uint8_t pin); // pass pin number 2, 3, 4, ..., 16
+      void setPinState(uint8_t pin, uint8_t value);				// pass pin number 2, 3, 4, ..., 16
+
+      //Get Pin Number from Segment Name Method
+
+      uint8_t getPinFromSegment(char segment[]);
+
+      //Get/Set Segment State Methods
+
+      uint8_t getSegmentState(char segment[]); // pass segment name a1...g1, a2...g2
+      void setSegmentState(char segment[/*static 2*/], uint8_t value); // pass segment name a1...g1, a2...g2
+                                       // static 2 (for C99) force two characters array (should be 3?)
+
+
+      //Get State Methods
+
+These methods return the logical value (0 or 1) of the segment specified in the method name.
+
+      // get the state for each segment
+      // of digit 1
+      uint8_t getState_a1(void);
+      ...
+      uint8_t getState_g1(void);
+
+      // get the state for each segment
+      // of digit 0 (aka digit 2)
+      uint8_t getState_a0(void);
+      ...
+      uint8_t getState_g0(void);
+
+      // get the state for each segment
+      // of digit 2 (aka digit 0)
+      uint8_t getState_a2(void);
+      ...
+      uint8_t getState_g2(void);
+
+      //Set State Methods
+
+These methods set the logical value (0 or 1) of the segment specified in the method name.
+
+      // set the state for each segment
+      // of digit 1
+      void setState_a1(uint8_t value);
+      ...
+      void setState_g1(uint8_t value);
+
+      // set the state for each segment
+      // of digit 0 (aka digit 2)
+      void setState_a0(uint8_t value);
+      ...
+      void setState_g0(uint8_t value);
+
+      // set the state for each segment
+      // of digit 2 (aka digit 0)
+      void setState_a0(uint8_t value);
+      ...
+      void setState_g2(uint8_t value);
+
+
+      //Accessors
+      //getters Methods
+
+These methods return the pin number assigned to the segment specified in the method name.
+
+      // get the pin assignments for each segment
+      // of digit 1
+      uint8_t get_a1(void);
+      ...
+      uint8_t get_g1(void);
+
+      // get the pin assignments for each segment
+      // of digit 0 (aka digit 2)
+      uint8_t get_a0(void);
+      ...
+      uint8_t get_g0(void);
+
+      // get the pin assignments for each segment
+      // of digit 2 (aka digit 0)
+      uint8_t get_a2(void);
+      ...
+      uint8_t get_g2(void);
+
+      // set misc class parameters
+      uint8_t get_onValue(void);
+      uint8_t get_offValue(void);
+      uint8_t get_ssType(void);
+
+
+      //Accessors
+      //setters methods
+
+These methods set the pin number assigned to the segment specified in the method name.
+
+      // set the pin assignments for each segment
+      // of digit 1
+      void set_a1(uint8_t value);
+      ...
+      void set_g1(uint8_t value);
+
+      // set the pin assignments for each segment
+      // of digit 0 (aka digit 2)
+      void set_a0(uint8_t value);
+      ...
+      void set_g0(uint8_t value);
+
+      // set the pin assignments for each segment
+      // of digit 2 (aka digit 0)
+      void set_a2(uint8_t value);
+      ...
+      void set_g2(uint8_t value);
+
+      // set misc class parameters
+      void set_onValue(uint8_t value);
+      void set_offValue(uint8_t value);
+      void set_ssType(uint8_t value);
+
+If additional transistors are employed between the Arduino and the display, in order to increase the possible current supplied to the display, then the logical outputs may need to be inverted, as the use of transistors will invert the HIGH and LOW states for on and off. For example, the default state for a SL-1255 display for on is a LOW input. If a transistor is used, then the base of the transistor will need to be HIGH, in order for the collector to supply a LOW. So, the onValue will need to become HIGH, instead of the default LOW.
+
+    private:
+
+      //Initialiser Methods
+      //Called by constructors
+
+      void init(void);
+      void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1);
+      void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2);
+      void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t ssType);
+      void init(uint8_t a1, uint8_t b1, uint8_t c1, uint8_t d1, uint8_t e1, uint8_t f1, uint8_t g1, uint8_t a2, uint8_t b2, uint8_t c2, uint8_t d2, uint8_t e2, uint8_t f2, uint8_t g2, uint8_t onValue, uint8_t offValue);
+
+      // The segments
+      // Digit 1
+      uint8_t _a1;
+      uint8_t _b1;
+      uint8_t _c1;
+      uint8_t _d1;
+      uint8_t _e1;
+      uint8_t _f1;
+      uint8_t _g1;
+
+      // Digit 2
+      uint8_t _a2;
+      uint8_t _b2;
+      uint8_t _c2;
+      uint8_t _d2;
+      uint8_t _e2;
+      uint8_t _f2;
+      uint8_t _g2;
+
+      // The logical values for on and off
+      uint8_t _onValue;
+      uint8_t _offValue;
+
+      uint8_t _ssType; // seven segment type, 0 (SL-1255) or 1 (SL-1256)
+
+      // Tables containing the character segment maps (bitmaps)
+      // The ASCII character set
+      static const uint8_t _asciiTable[128];
+      // The Hexadecimal character set (0-F)
+      static const uint8_t _hexTable[16]; //for hexWrite()
+      // The Decimal character set (0-9)
+      static const uint8_t _decTable[10]; //for decWrite()
+      // The Octal character set (0-7)
+      static const uint8_t _octTable[8];  //for octWrite()
+
+};
+
+
